@@ -19,8 +19,8 @@
                     <div class="card-body">
                         <form action="login_logic.php" method="post">
                             <div>
-                                <label for="email">Email</label> <br>
-                                <input class="form-control" type="text" name="email" id="username">
+                                <label for="username">Username</label> <br>
+                                <input class="form-control" type="text" name="username" id="username">
                             </div>
                             <div>
                                 <label for="passwd">Password </label> <br>

@@ -1,41 +1,36 @@
 <?php
 include 'supabaseConnect.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $passwd = $_POST['passwd'];
 
-    $url = 'https://ppvsrugrszzrajvwwqzw.supabase.co/auth/v1/token?grant_type=password';
-    $data = [
-        'email' => $email,
-        'password' => $passwd,
-    ];
+$username = $_POST['username'];
+$password = $_POST['passwd'];
 
-    $options = [
-        'http' => [
-            'header' => "Content-Type: application/json\r\nAuthorization: Bearer your-anon-key\r\n",
-            'method' => 'POST',
-            'content' => json_encode($data),
-        ],
-    ];
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-
-    if ($result === FALSE) {
-        // Handle error
-        echo "Login failed!";
+$query = "SELECT * FROM admin WHERE username='$username'";
+$result = pg_query($dbconn, $query);
+$user = pg_fetch_assoc($result);
+print_r($user);
+echo ('<br>');
+if (pg_num_rows($result) == 1) {
+    $hashpasswd = $user['password'];
+    echo 'Pass from db: [', $hashpasswd, ']<br>', 'Pass from post: [', $password, ']';
+    echo '<pre>', 'RS: ', print_r($user), '</pre>';
+    if (hash_equals($password, $hashpasswd)) {
+        session_start();
+        $query = "UPDATE web_users SET active = 1 WHERE userid='" . $user['userid'] . "'";
+        pg_query($dbconn, $query);
+        $_SESSION['user'] = [
+            'userid' => $user['userid'],
+            'username' => $user['username'],
+            'name' => $user['name'],
+            'password' => $user['passwd'],
+        ];
+        echo "Login success! ";
+        echo '<pre>', 'Session: ', print_r($_SESSION), '</pre>';
+        echo '<a href="dashboard.php">Continue..</a>';
     } else {
-        $response = json_decode($result, true);
-        if (isset($response['access_token'])) {
-            // Login successful
-            session_start();
-            $_SESSION['access_token'] = $response['access_token'];
-            echo "Login successful!";
-            // Redirect to another page
-            header('Location: index.php');
-        } else {
-            // Login failed
-            echo "Login failed!";
-        }
+        echo "Login Failed! ";
+        echo '<a href="index.php">Continue..</a>';
     }
+} else {
+    echo "Username or password doesn't match any row! ";
+    echo '<a href="index.php">Continue..</a>';
 }

@@ -17,10 +17,10 @@
                         <h2>Login Page</h2>
                     </div>
                     <div class="card-body">
-                        <form action="login.php" method="post">
+                        <form action="login_logic.php" method="post">
                             <div>
-                                <label for="username">Username</label> <br>
-                                <input class="form-control" type="text" name="username" id="username">
+                                <label for="email">Email</label> <br>
+                                <input class="form-control" type="text" name="email" id="username">
                             </div>
                             <div>
                                 <label for="passwd">Password </label> <br>

@@ -31,6 +31,6 @@ if (pg_num_rows($result) == 1) {
         echo '<a href="index.php">Continue..</a>';
     }
 } else {
-    echo "Username or password doesn't match any row! ";
+    echo "Kesalahan Username or password tidak sesuai";
     echo '<a href="index.php">Continue..</a>';
 }

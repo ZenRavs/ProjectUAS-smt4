@@ -7,9 +7,9 @@ try {
         echo "Query failed: " . pg_last_error();
         exit;
     }
-    print_r($result);
+    //print_r($result);
     while ($row = pg_fetch_assoc($result)) {
-        echo $row['nim'] . " - " . $row['nama'] . "<br />";
+        echo $row['username'] . " - " . $row['password'] . " - " . $row['nama'] . "<br />";
     }
     pg_free_result($result);
     pg_close($dbconn);

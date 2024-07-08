@@ -2,7 +2,7 @@
 include 'supabaseConnect.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
-    $passwd = $_POST['password'];
+    $passwd = $_POST['passwd'];
 
     $url = 'https://ppvsrugrszzrajvwwqzw.supabase.co/auth/v1/token?grant_type=password';
     $data = [

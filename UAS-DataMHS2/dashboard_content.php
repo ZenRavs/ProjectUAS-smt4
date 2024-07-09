@@ -1,49 +1,32 @@
-<?php
-include 'supabaseConnect.php';
-
-$query = "SELECT * FROM mahasiswa";
-$result = pg_query($dbconn, $query);
-$data_mhs = pg_fetch_all($result);
-?>
-<div class="container mt-2">
-  <h1>Data Mahasiswa</h1>
-  <a href="download_report.php" class="btn btn-primary btn-download">Download Laporan</a>
-  <table class="table table-hover table-striped mt-3">
-    <thead>
-      <tr>
-        <th scope="col" class="text-center">No.</th>
-        <th scope="col">ID</th>
-        <th scope="col">Username</th>
-        <th scope="col">Password</th>
-        <th scope="col">NIM</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Alamat</th>
-        <th scope="col">No. Telp</th>
-        <th scope="col">Email</th>
-        <th scope="col">Tanggal Lahir</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $i = 1;
-      foreach ($data_mhs as $mhs) {
-      ?>
-      <tr>
-        <td class="text-center"><?php echo $i ?></td>
-        <td><?php echo $mhs['id_mhs'] ?></td>
-        <td><?php echo $mhs['username'] ?></td>
-        <td><?php echo $mhs['password'] ?></td>
-        <td><?php echo $mhs['nim'] ?></td>
-        <td><?php echo $mhs['nama'] ?></td>
-        <td><?php echo $mhs['alamat'] ?></td>
-        <td><?php echo $mhs['telp'] ?></td>
-        <td><?php echo $mhs['email'] ?></td>
-        <td><?php echo $mhs['tanggal_lahir'] ?></td>
-      </tr>
-      <?php
-        $i++;
-      }
-      ?>
-    </tbody>
-  </table>
+<div class="card">
+  <div class="card-body">
+    <h1>Data Mahasiswa</h1>
+    <a href="download_report.php" class="btn btn-primary btn-download">Download Laporan</a>
+    <table class="table table-striped table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>No.Telp</th>
+          <th>Alamat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example data -->
+        <tr>
+          <td>123456</td>
+          <td>John Doe</td>
+          <td>johndoe</td>
+          <td>password123</td>
+          <td>john@example.com</td>
+          <td>123456789</td>
+          <td>123 Main St</td>
+        </tr>
+        <!-- Additional rows as needed -->
+      </tbody>
+    </table>
+  </div>
 </div>

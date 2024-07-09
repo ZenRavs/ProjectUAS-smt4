@@ -40,7 +40,7 @@ if (isset($_SESSION['user'])) {
                         <div class="btn-group">
                             <div class="row g-2">
                                 <div class="col md-0">
-                                    <form action="edit_mhs.php" method="POST">
+                                    <form action="edit_form.php" method="GET">
                                         <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
                                         <input type="hidden" name="username" value="<?php echo $mhs['username'] ?>">
                                         <input type="hidden" name="password" value="<?php echo $mhs['password'] ?>">
@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
                                         <input type="hidden" name="telp" value="<?php echo $mhs['telp'] ?>">
                                         <input type="hidden" name="email" value="<?php echo $mhs['email'] ?>">
                                         <input type="hidden" name="tanggal_lahir" value="<?php echo $mhs['tanggal_lahir'] ?>">
-                                        <input class="btn btn-sm btn-primary" type="submit" value="Edit">
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Edita">
                                     </form>
                                 </div>
                                 <div class="col md-0">

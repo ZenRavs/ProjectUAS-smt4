@@ -2,7 +2,12 @@
 include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
-    echo '<br> <br> Menampilkan DASHBOARD! <br>';
+?>
+    DASHBOARD!
+    <form action="destroy_session.php">
+        <input class="btn btn-sm btn-danger" type="submit" value="Logout">
+    </form>
+<?php
     include 'table_mhs.php';
 } else {
     $_SESSION['login_error'] = 1;

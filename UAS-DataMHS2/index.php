@@ -12,9 +12,12 @@ session_start();
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
+                <div class="alert alert-info" role="alert">
+                    Welcome!
+                </div>
                 <div class="card shadow">
                     <div class="card-header">
                         <h2>Login Page</h2>
@@ -29,23 +32,38 @@ session_start();
                                 <label for="passwd">Password </label> <br>
                                 <input class="form-control" type="password" name="passwd" id="passwd" required>
                             </div>
-                            <br>
-                            <input class="btn btn-primary col" type="submit" value="Sign In">
-                        </form>
-                        <div class="row justify-content-center">
-                            <div class="ccol">
-                                <form action="register.php" method="">
-                                    <input class="btn btn-success mt-3 col" type="submit" value="Sign Up">
-                                </form>
+                            <div class="d-flex justify-content-center mt-3" ">
+                                <input class=" btn btn-primary" style="width: 150px;" type="submit" value="Sign In">
                             </div>
+                        </form>
+                        <div class="d-flex justify-content-center m-2">or</div>
+                        <div class="d-flex justify-content-center">
+                            <form action="register.php">
+                                <input class="btn btn-success" style="width: 150px;" type="submit" value="Sign Up">
+                            </form>
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
                 <?php
                 if (isset($_SESSION['login_error'])) {
+                    $error = $_SESSION['login_error'];
                 ?>
-                    <div class="alert alert-danger mt-2" role="alert">
-                        Login failed! Try Again.
+                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="...">
+                                <strong class="me-auto">Bootstrap</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                <?php
+                                echo 'Error: ' . $error;
+                                ?>
+
+                            </div>
+                        </div>
                     </div>
                 <?php
                 }
@@ -57,7 +75,6 @@ session_start();
 
 </html>
 <?php
-
 session_destroy();
 ?>
 <script>

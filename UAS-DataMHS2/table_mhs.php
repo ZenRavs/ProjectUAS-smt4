@@ -6,11 +6,11 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_mhs = pg_fetch_all($result);
 ?>
-    <div class="container mt-3">
-        <form action="insert_mhs.php" method="POST">
+    <div class="container border rounded">
+        <form action="insert_mhs.php" method="POST" class="d-flex justify-content-end mt-2">
             <input class="btn btn-sm btn-primary" type="submit" value="Insert">
         </form>
-        <table class="table table-hover mt-3">
+        <table class="table table-hover mt-1">
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No.</th>
@@ -23,6 +23,7 @@ if (isset($_SESSION['user'])) {
                     <th scope="col">No. Telp</th>
                     <th scope="col">Email</th>
                     <th scope="col">Tanggal Lahir</th>
+                    <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>

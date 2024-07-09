@@ -9,15 +9,19 @@ header('Content-Disposition: attachment; filename=data_mahasiswa.csv');
 $output = fopen('php://output', 'w');
 
 // Output the column headings
-fputcsv($output, array('NIM', 'Nama', 'Username', 'Password', 'Email', 'No.Telp', 'Alamat'));
+fputcsv($output, array('No.', 'ID', 'Username', 'Password', 'NIM', 'Nama', 'Alamat', 'No. Telp', 'Email', 'Tanggal Lahir'));
 
-// Query data mahasiswa from the database
-$query = "SELECT nim, nama, username, password, email, telp, alamat FROM mahasiswa";
+// Query to fetch data
+$query = "SELECT * FROM mahasiswa";
 $result = pg_query($dbconn, $query);
 
-// Output the rows
-while ($row = pg_fetch_assoc($result)) {
-    fputcsv($output, $row);
+if ($result) {
+    $i = 1;
+    // Output the rows
+    while ($row = pg_fetch_assoc($result)) {
+        fputcsv($output, array($i, $row['id_mhs'], $row['username'], $row['password'], $row['nim'], $row['nama'], $row['alamat'], $row['telp'], $row['email'], $row['tanggal_lahir']));
+        $i++;
+    }
 }
 
 // Close the file pointer

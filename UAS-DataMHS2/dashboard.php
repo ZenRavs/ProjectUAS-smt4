@@ -67,7 +67,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" id="data-mahasiswa-link">
+          <a href="#" class="nav-link" id="data-mhs-link">
             <i class="nav-icon fas fa-table"></i>
             Data Mahasiswa
           </a>
@@ -128,11 +128,9 @@
       $('#content').load('profil.php');
     });
 
-    $('#data-mahasiswa-link').on('click', function(e) {
+    $('#data-mhs-link').on('click', function(e) {
       e.preventDefault();
       $('#content').load('datamhs.php');
-      $('.nav-link').removeClass('active');  // Remove active class from all nav links
-      $(this).addClass('active');  // Add active class to the clicked nav link
     });
   });
 </script>

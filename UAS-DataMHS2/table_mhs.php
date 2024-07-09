@@ -7,6 +7,7 @@ if (isset($_SESSION['user'])) {
     $data_mhs = pg_fetch_all($result);
 ?>
     <div class="container mt-3">
+        <h1>Data Mahasiswa</h1>
         <table class="table table-hover table-striped">
             <tr>
                 <th scope="col" class="text-center">#</th>

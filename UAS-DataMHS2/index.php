@@ -23,18 +23,22 @@ session_start();
                         <form action="login_logic.php" method="post">
                             <div>
                                 <label for="username">Username</label> <br>
-                                <input class="form-control" type="text" name="username" id="username">
+                                <input class="form-control" type="text" name="username" id="username" required>
                             </div>
                             <div>
                                 <label for="passwd">Password </label> <br>
-                                <input class="form-control" type="password" name="passwd" id="passwd">
+                                <input class="form-control" type="password" name="passwd" id="passwd" required>
                             </div>
                             <br>
-                            <input class="btn btn-primary" type="submit" value="Sign In">
+                            <input class="btn btn-primary col" type="submit" value="Sign In">
                         </form>
-                        <form action="register.php" method="">
-                            <input class="btn btn-success" type="submit" value="Sign Up">
-                        </form>
+                        <div class="row justify-content-center">
+                            <div class="ccol">
+                                <form action="register.php" method="">
+                                    <input class="btn btn-success mt-3 col" type="submit" value="Sign Up">
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php

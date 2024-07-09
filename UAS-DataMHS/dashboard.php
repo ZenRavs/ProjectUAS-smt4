@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+    .user-panel .image i {
+      color: white;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -24,8 +29,11 @@
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <i class="fas fa-user-graduate"></i>
+        </div>
         <div class="info">
-          <a href="#" class="d-block">Ryan Atha Muyassar</a>
+          <a href="#" class="d-block">Pendataan Mahasiswa</a>
         </div>
       </div>
 
@@ -44,31 +52,25 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
           </li>
+          <li class="nav-item">
             <a href="?page=input-data" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Data Mahasiswa</p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=data-prodi" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Data Program Studi</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=data-fakultas" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>Data Fakultas</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -83,6 +85,8 @@
         switch($_GET['page'])
         {
             case 'input-data' : include('datauser.php');break;
+            case 'data-prodi' : include('dataprodi.php');break;
+            case 'data-fakultas' : include('datafakultas.php');break;
             case 'users': include('users.php');break;
             default: echo "ini adalah dashboard";break;
         }

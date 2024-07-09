@@ -54,6 +54,11 @@ if (isset($_SESSION['user'])) {
                                     </form>
                                 </div>
                                 <div class="col md-0">
+                                    <form action="insert_mhs.php" method="POST">
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Insert">
+                                    </form>
+                                </div>
+                                <div class="col md-0">
                                     <form action="delete_mhs.php" method="get">
                                         <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                     </form>

@@ -1,12 +1,12 @@
 <?php
 include 'supabaseConnect.php';
-//session_start();
+session_start();
 if (isset($_SESSION['user'])) {
     $query = "SELECT * FROM mahasiswa";
     $result = pg_query($dbconn, $query);
     $data_mhs = pg_fetch_all($result);
 ?>
-    <div class="container mt-2">
+    <div class="container mt-3">
         <table class="table table-hover table-striped">
             <tr>
                 <th scope="col" class="text-center">#</th>
@@ -54,11 +54,6 @@ if (isset($_SESSION['user'])) {
                                     </form>
                                 </div>
                                 <div class="col md-0">
-                                    <form action="insert_mhs.php" method="POST">
-                                        <input class="btn btn-sm btn-primary" type="submit" value="Insert">
-                                    </form>
-                                </div>
-                                <div class="col md-0">
                                     <form action="delete_mhs.php" method="get">
                                         <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                     </form>
@@ -73,6 +68,12 @@ if (isset($_SESSION['user'])) {
             ?>
         </table>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+        src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin = "anonymous"
+    </script>
 <?php
 } else {
 }

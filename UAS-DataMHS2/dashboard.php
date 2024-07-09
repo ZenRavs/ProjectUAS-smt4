@@ -130,7 +130,7 @@
 
     $('#data-mhs-link').on('click', function(e) {
       e.preventDefault();
-      $('#content').load('datamhs.php');
+      $('#content').load('table_mhs.php');
     });
   });
 </script>

@@ -9,8 +9,7 @@
 <body>
     <div class="container">
         <h2>Form Mahasiswa</h2>
-        <form action="insert_mahasiswa.php" method="post">
-            <div class="form-group">
+        <form action="dashboard.php">
                 <label for="id_mhs">ID Mahasiswa:</label>
                 <input type="text" class="form-control" id="id_mhs" name="id_mhs">
             </div>
@@ -46,7 +45,7 @@
                 <label for="tanggal_lahir">Tanggal Lahir:</label>
                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">SIMPAN</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

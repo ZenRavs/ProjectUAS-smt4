@@ -11,10 +11,10 @@ if (isset($_SESSION['user'])) {
             <tr>
                 <th scope=" col" class="text-center">#</th>
                 <th scope="col">ID</th>
-                <th scope="col">Username</th>
-                <th scope="col">Password</th>
                 <th scope="col">NIM</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Fakultas</th>
+                <th scope="col">Prodi</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">No. Telp</th>
                 <th scope="col">Email</th>
@@ -28,10 +28,10 @@ if (isset($_SESSION['user'])) {
                 <tr>
                     <td class="text-center"><?php echo $i ?></td>
                     <td><?php echo $mhs['id_mhs'] ?></td>
-                    <td><?php echo $mhs['username'] ?></td>
-                    <td><?php echo $mhs['password'] ?></td>
                     <td><?php echo $mhs['nim'] ?></td>
                     <td><?php echo $mhs['nama'] ?></td>
+                    <td><?php echo $mhs['kode_fakultas'] ?></td>
+                    <td><?php echo $mhs['kode_prodi'] ?></td>
                     <td><?php echo $mhs['alamat'] ?></td>
                     <td><?php echo $mhs['telp'] ?></td>
                     <td><?php echo $mhs['email'] ?></td>
@@ -54,15 +54,15 @@ if (isset($_SESSION['user'])) {
                                     </form>
                                 </div>
                                 <div class="col md-0">
-                                <form action="insert_mhs.php" method="POST">
-                                <input class="btn btn-sm btn-primary" type="submit" value="Insert">
-                                <div class="col md-0">
-                                    <form action="delete_mhs.php" method="get">
-                                        <input class="btn btn-sm btn-danger" type="submit" value="Delete">
-                                    </form>
+                                    <form action="insert_mhs.php" method="POST">
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Insert">
+                                        <div class="col md-0">
+                                            <form action="delete_mhs.php" method="get">
+                                                <input class="btn btn-sm btn-danger" type="submit" value="Delete">
+                                            </form>
+                                        </div>
                                 </div>
                             </div>
-                        </div>
                     </td>
                 </tr>
             <?php

@@ -18,9 +18,9 @@
         <!-- Example data -->
         <tr>
           <td>123456</td>
-          <td>Contoh</td>
-          <td>Contoh</td>
-          <td>Exsample123</td>
+          <td>John Doe</td>
+          <td>johndoe</td>
+          <td>password123</td>
           <td>john@example.com</td>
           <td>123456789</td>
           <td>123 Main St</td>

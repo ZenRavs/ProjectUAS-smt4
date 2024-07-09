@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])) {
                     <td><?php echo $mhs['nim'] ?></td>
                     <td><?php echo $mhs['nama'] ?></td>
                     <td><?php echo $mhs['kode_fakultas'] ?></td>
-                    <td><?php echo $mhs['kode_prodi'] ?></td>
+                    <td><?php echo $mhs['kode_jurusan'] ?></td>
                     <td><?php echo $mhs['alamat'] ?></td>
                     <td><?php echo $mhs['telp'] ?></td>
                     <td><?php echo $mhs['email'] ?></td>

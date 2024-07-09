@@ -12,10 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Custom CSS -->
   <style>
-    body {
-      font-family: 'Source Sans Pro', sans-serif;
-    }
-
     .sidebar {
       height: 100vh;
       position: fixed;
@@ -67,41 +63,41 @@
         </div>
       </div>
 
-    <nav>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a href="#" class="nav-link active" id="dashboard-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" id="data-mahasiswa-link">
-            <i class="nav-icon fas fa-table"></i>
-            Data Mahasiswa
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="?page=data-prodi" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
-            Data Program Studi
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="?page=data-fakultas" class="nav-link">
-            <i class="nav-icon fas fa-building"></i>
-            Data Fakultas
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" id="about-link">
-            <i class="nav-icon fas fa-info-circle"></i>
-            About Us
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+      <nav>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" id="dashboard-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="data-mahasiswa-link">
+              <i class="nav-icon fas fa-table"></i>
+              Data Mahasiswa
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=data-prodi" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              Data Program Studi
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=data-fakultas" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              Data Fakultas
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="about-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              About Us
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -137,14 +133,14 @@
         $('#content').load('profil.php');
       });
 
-    $('#data-mahasiswa-link').on('click', function(e) {
-      e.preventDefault();
-      $('#content').load('table_mhs.php');
-      $('.nav-link').removeClass('active');  // Remove active class from all nav links
-      $(this).addClass('active');  // Add active class to the clicked nav link
+      $('#data-mahasiswa-link').on('click', function(e) {
+        e.preventDefault();
+        $('#content').load('table_mhs.php');
+        $('.nav-link').removeClass('active'); // Remove active class from all nav links
+        $(this).addClass('active'); // Add active class to the clicked nav link
+      });
     });
-  });
-</script>
+  </script>
 </body>
 
 </html>

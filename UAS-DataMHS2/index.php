@@ -30,7 +30,10 @@ session_start();
                                 <input class="form-control" type="password" name="passwd" id="passwd">
                             </div>
                             <br>
-                            <input class="btn btn-primary" type="submit" value="Login">
+                            <input class="btn btn-primary" type="submit" value="Sign In">
+                        </form>
+                        <form action="register.php" method="">
+                            <input class="btn btn-success" type="submit" value="Sign Up">
                         </form>
                     </div>
                 </div>

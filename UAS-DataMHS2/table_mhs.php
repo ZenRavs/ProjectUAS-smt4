@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
     <div class="container mt-3">
         <table class="table table-hover table-striped">
             <tr>
-                <th scope="col" class="text-center">#</th>
+                <th scope=" col" class="text-center">#</th>
                 <th scope="col">ID</th>
                 <th scope="col">Username</th>
                 <th scope="col">Password</th>

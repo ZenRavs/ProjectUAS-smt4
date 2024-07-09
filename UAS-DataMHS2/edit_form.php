@@ -22,12 +22,12 @@
         <form action="dashboard.php" method="post">
             <input type="hidden" name="id_mhs" value="<?php echo $row['id_mhs']; ?>">
             <div class="form-group">
-                <label for="username_mhs">Username:</label>
-                <input type="text" class="form-control" id="username_mhs" name="username_mhs" value="<?php echo $row['username_mhs']; ?>">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo $row['username']; ?>">
             </div>
             <div class="form-group">
                 <label for="password_mhs">Password:</label>
-                <input type="password" class="form-control" id="password_mhs" name="password_mhs" value="<?php echo $row['password_mhs']; ?>">
+                <input type="password" class="form-control" id="password_mhs" name="password_mhs" value="<?php echo $row['password']; ?>">
             </div>
             <div class="form-group">
                 <label for="nim">NIM:</label>
@@ -35,19 +35,19 @@
             </div>
             <div class="form-group">
                 <label for="nama_mhs">Nama:</label>
-                <input type="text" class="form-control" id="nama_mhs" name="nama_mhs" value="<?php echo $row['nama_mhs']; ?>">
+                <input type="text" class="form-control" id="nama_mhs" name="nama_mhs" value="<?php echo $row['nama']; ?>">
             </div>
             <div class="form-group">
                 <label for="alamat_mhs">Alamat:</label>
-                <textarea class="form-control" id="alamat_mhs" name="alamat_mhs"><?php echo $row['alamat_mhs']; ?></textarea>
+                <textarea class="form-control" id="alamat_mhs" name="alamat_mhs"><?php echo $row['alamat']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="telp_mhs">Telepon:</label>
-                <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="<?php echo $row['telp_mhs']; ?>">
+                <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="<?php echo $row['telp']; ?>">
             </div>
             <div class="form-group">
                 <label for="email_mhs">Email:</label>
-                <input type="email" class="form-control" id="email_mhs" name="email_mhs" value="<?php echo $row['email_mhs']; ?>">
+                <input type="email" class="form-control" id="email_mhs" name="email_mhs" value="<?php echo $row['email']; ?>">
             </div>
             <div class="form-group">
                 <label for="tanggal_lahir">Tanggal Lahir:</label>

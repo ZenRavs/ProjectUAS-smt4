@@ -7,10 +7,11 @@ if (isset($_SESSION['user'])) {
     $data_mhs = pg_fetch_all($result);
 ?>
     <div class="container flex border rounded mt-3 bg-white p-3">
-        <h1>Data Mahasiswa</h1>
-        <form action="insert_form.php" method="POST" class="d-flex justify-content-end mt-2">
-            <input class="btn btn-primary" type="submit" value="Insert">
-        </form>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Data Mahasiswa</h1>
+            <button id="addNew" class="btn btn-primary">Insert</button>
+        </div>
+        <div id="formContainer"></div>
         <table class="table table-hover mt-2">
             <thead>
                 <tr>
@@ -18,7 +19,7 @@ if (isset($_SESSION['user'])) {
                     <th scope="col">ID</th>
                     <th scope="col">NIM</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Faklutas</th>
+                    <th scope="col">Fakultas</th>
                     <th scope="col">Prodi</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">No. Telp</th>
@@ -67,10 +68,70 @@ if (isset($_SESSION['user'])) {
     </div>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin = "anonymous"
+        $(document).ready(function() {
+            $('#addNew').on('click', function() {
+                $.ajax({
+                    url: 'insert_form.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#formContainer').html(response);
+                        $('#addNew').hide(); // Hide the "Insert" button
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
+
+            $('.edit-btn').on('click', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'edit_form.php',
+                    type: 'POST',
+                    data: { id_mhs: id },
+                    success: function(response) {
+                        $('#formContainer').html(response);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
+
+            $(document).on('submit', '#insertForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response);
+                        location.reload(); // Refresh the table
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghubungi server.');
+                    }
+                });
+            });
+
+            $(document).on('submit', '#editForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'update_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response);
+                        location.reload(); // Refresh the table
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghubungi server.');
+                    }
+                });
+            });
+        });
     </script>
 
 <?php

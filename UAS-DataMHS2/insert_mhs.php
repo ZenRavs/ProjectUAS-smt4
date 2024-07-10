@@ -3,10 +3,10 @@ include 'supabaseConnect.php';
 session_start();
 
 if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Mengambil data dari formS
-    $nim = $_POST['nim'];
+    // Mengambil data dari form
+    $nim = $_POST['nim_mhs'];
     $nama_mhs = $_POST['nama_mhs'];
-    $fakultas_mhs = $_POST['username'];
+    $fakultas_mhs = $_POST['kode_faku'];
     $jurusan_mhs = $_POST['kode_jurusan'];
     $alamat_mhs = $_POST['alamat_mhs'];
     $telp_mhs = $_POST['telp_mhs'];
@@ -33,7 +33,7 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Error adding record: " . pg_last_error($dbconn);
     }
-    header('location: dashboard.php');
+
     // Menutup koneksi
     pg_close($dbconn);
 } else {

@@ -9,18 +9,18 @@
 <body>
     <div class="container mt-3">
         <h2>Tambah Data Mahasiswa</h2>
-        <form action="insert_mhs.php" method="post">
+        <form id="insertForm" method="post">
             <div class="form-group">
-                <label for="username">Faklutas</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="kode_faku">Fakultas</label>
+                <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
             </div>
             <div class="form-group">
-                <label for="password_mhs">Jurusan:</label>
+                <label for="kode_jurusan">Jurusan:</label>
                 <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
             </div>
             <div class="form-group">
-                <label for="nim">NIM:</label>
-                <input type="text" class="form-control" id="nim" name="nim" required>
+                <label for="nim_mhs">NIM:</label>
+                <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" required>
             </div>
             <div class="form-group">
                 <label for="nama_mhs">Nama:</label>
@@ -45,7 +45,26 @@
             <button type="submit" class="btn btn-primary mt-3">Tambah</button>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#insertForm').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response);
+                        window.location.href = 'table_mhs.php'; // Redirect to table_mhs.php
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghubungi server.');
+                    }
+                });
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

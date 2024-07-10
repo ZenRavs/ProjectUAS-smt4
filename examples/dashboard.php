@@ -1,6 +1,5 @@
-<?php
-session_start();
-?>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -13,19 +12,18 @@ session_start();
 <body>
     <div class="sidebar">
         <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
-        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
+        <a href="#" class="btn btn-dark text-start" data-file="dashboard.php">DASHBOARD</a>
+        <a href="#" class="btn btn-dark text-start" data-file="../UAS-DataMHS2/table_mhs.php">Data Mahasiswa</a>
         <a href="#" class="btn btn-dark text-start" data-file="data_fakultas.php">Data Fakultas</a>
         <a href="#" class="btn btn-dark text-start" data-file="data_jurusan.php">Data Jurusan</a>
-        <a href="#" class="btn btn-dark text-start" data-file="profil.php">About</a>
+        <a href="#" class="btn btn-dark text-start" data-file="../UAS-DataMHS2/profil.php">About</a>
     </div>
     <div class="content">
         <div class="header">
             <div><!-- Placeholder for alignment --></div>
             <div class="d-flex align-items-center">
-                <a href="destroy_session.php" class="logout">logout</a>
-                <span class="ms-3"><?php echo $_SESSION['user']['admin']; ?></span>
-
+                <span class="me-3">Admin-00</span>
+                <a href="#" class="logout">logout</a>
                 <div class="ms-3 d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; border-radius: 50%; background-color: #007bff; color: white;">
                     A
                 </div>
@@ -41,7 +39,6 @@ session_start();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.content-inner').load('dashboard.content.php');
             $('.sidebar a').on('click', function(e) {
                 e.preventDefault();
                 var file = $(this).data('file');

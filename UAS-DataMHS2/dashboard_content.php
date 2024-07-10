@@ -5,7 +5,7 @@ $query = "SELECT * FROM mahasiswa";
 $result = pg_query($dbconn, $query);
 $data_mhs = pg_fetch_all($result);
 ?>
-<div class="container mt-2">
+<div class="container m-2 bg-white rounded p-3">
   <h1>Data Mahasiswa</h1>
   <a href="download_report.php" class="btn btn-primary btn-download">Download Laporan</a>
   <table class="table table-hover table-striped mt-3">

@@ -7,7 +7,7 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_mhs = $_POST['id_mhs'];
     $nim = $_POST['nim'];
     $nama_mhs = $_POST['nama'];
-    $fakultas_mhs = $_POST['kode_faku'];
+    $fakultas_mhs = $_POST['username'];
     $jurusan_mhs = $_POST['kode_jurusan'];
     $alamat_mhs = $_POST['alamat'];
     $telp_mhs = $_POST['telp'];
@@ -15,10 +15,10 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $tanggal_lahir = $_POST['tanggal_lahir'];
 
     // Menyiapkan pernyataan SQL untuk mengupdate data
-    $query = "UPDATE mahasiswa SET 
+    $update = "UPDATE mahasiswa SET 
         nim='$nim', 
         nama='$nama_mhs', 
-        kode_fakultas='$fakultas_mhs', 
+        username='$fakultas_mhs', 
         kode_jurusan='$jurusan_mhs', 
         alamat='$alamat_mhs', 
         telp='$telp_mhs', 
@@ -27,7 +27,7 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         WHERE id_mhs=$id_mhs";
 
     // Mengeksekusi pernyataan SQL
-    if (pg_query($dbconn, $query)) {
+    if (pg_update($dbconn, $query)) {
         echo "Record updated successfully";
     } else {
         echo "Error updating record: " . pg_last_error($dbconn);

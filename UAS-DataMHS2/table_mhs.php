@@ -53,7 +53,7 @@ if (isset($_SESSION['user'])) {
                                         </form>
                                     </div>
                                     <div class="col md-0">
-                                        <form action="delete_mhs.php" method="get">
+                                        <form action="delete.php" method="get">
                                             <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                         </form>
                                     </div>

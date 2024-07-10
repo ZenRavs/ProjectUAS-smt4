@@ -72,7 +72,7 @@ if (isset($_SESSION['user'])) {
                                         <div class="col md-0">
                                         </div>
                                         <div class="col md-0">
-                                            <form action="" method="get">
+                                            <form action="delete_fakultas.php" method="get">
                                                 <input type="hidden" name="delete_id" value="<?php echo $faku['id_faku']; ?>">
                                                 <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                             </form>

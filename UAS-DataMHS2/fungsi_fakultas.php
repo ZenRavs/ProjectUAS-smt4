@@ -4,15 +4,15 @@ session_start();
 
 if (isset($_SESSION['user'])) {
     //ambil
-    $kode_mhs = $_POST['kode'];
-    $fakultas_mhs = $_POST['fakultas'];
-    // print_r ($_POST);
+    $fakultas_mhs = $_POST['kode'];
+    $fakultas = $_POST['fakultas'];
+    print_r ($_POST);
 
     //perintah sql
     $table = 'fakultas';
     $data = [
-        'kode' => $kode_mhs,
-        'fakultas' => $fakultas_mhs,
+        'kode_faku' => $fakultas_mhs,
+        'fakultas' => $fakultas,
     ];
     $result = pg_insert($dbconn, $table, $data);
 ?>

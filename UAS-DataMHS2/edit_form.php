@@ -1,7 +1,7 @@
 <?php
-include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
+    include 'supabaseConnect.php';
     // Mengambil data mahasiswa berdasarkan ID
     $id_mhs = $_POST['id_mhs'];
     $query_mhs = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";

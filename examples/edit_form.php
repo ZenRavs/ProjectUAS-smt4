@@ -1,9 +1,9 @@
 <?php
-include 'supabaseConnect.php';
+include '../UAS-DataMHS2/supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
     // Mengambil data mahasiswa berdasarkan ID
-    $id_mhs = $_POST['id_mhs'];
+    $id_mhs = 1;
     $query_mhs = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";
     $result_mhs = pg_query($dbconn, $query_mhs);
     $mhs = pg_fetch_assoc($result_mhs);
@@ -31,12 +31,23 @@ if (isset($_SESSION['user'])) {
                             <div class="form-group">
                                 <div class="row flex">
                                     <div class="col-md-2">
-                                        <label for="username">Fakultas</label>
-                                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
+                                        <div class="form-group">
+                                            <label for="combo-box">Fakultas</label>
+                                            <select class="form-control" id="combo-box" name="combo-box">
+                                                <?php foreach ($faku as $option) { ?>
+                                                    <option value="<?php echo $option['kode']; ?>"><?php echo $option['fakultas']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <label for="password_mhs">Jurusan</label>
-                                        <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="combo-box">Jurusan</label>
+                                            <select class="form-control" id="combo-box" name="combo-box">
+                                                <?php foreach ($jurusan as $option) { ?>
+                                                    <option value="<?php echo $option['kode']; ?>"><?php echo $option['jurusan']; ?></option> <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md">
                                         <label for="nim">NIM</label>
@@ -72,12 +83,13 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-            <<<<<<< HEAD <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                </body>
-                =======
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            </body>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
         </div>
     </div>
     <script>
@@ -87,7 +99,6 @@ if (isset($_SESSION['user'])) {
             });
         });
     </script>
-    >>>>>>> a0c96a2a7610f9cb8f5b7df3a1d2ae706b8c0112
 <?php
 } else {
     echo "Anda tidak memiliki akses.";

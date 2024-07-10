@@ -1,8 +1,6 @@
 <?php
 include 'supabaseConnect.php';
-include 'delete_fungsi.php';
 session_start();
-
 $id_mhs = ['id_mhs' => $_POST['id_mhs']];
 print_r($_POST);
 

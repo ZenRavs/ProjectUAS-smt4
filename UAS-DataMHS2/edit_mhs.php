@@ -13,7 +13,6 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $telp_mhs = $_POST['telp_mhs'];
     $email_mhs = $_POST['email_mhs'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
-
     // Menyiapkan pernyataan SQL untuk mengupdate data
     $table = 'mahasiswa';
     $data = [

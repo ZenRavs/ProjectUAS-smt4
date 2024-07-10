@@ -24,10 +24,8 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Error adding record: " . pg_last_error($dbconn);
     }
-
     // Menutup koneksi
     pg_close($dbconn);
 } else {
     echo "Invalid request.";
 }
-?>

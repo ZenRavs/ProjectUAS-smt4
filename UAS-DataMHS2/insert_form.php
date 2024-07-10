@@ -1,9 +1,8 @@
 <?php
-include 'supabaseConnect.php';
+//include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
 ?>
-
     <div class="container mt-3 mb-3">
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -38,7 +37,7 @@ if (isset($_SESSION['user'])) {
                                 <textarea class="form-control" id="alamat_mhs" name="alamat_mhs" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="telp_mhs">Telepon</label>
+                                <label for="telp_mhs">No. Telp</label>
                                 <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" required>
                             </div>
                             <div class="form-group">
@@ -51,7 +50,7 @@ if (isset($_SESSION['user'])) {
                             </div>
                             <div class="col mt-4">
                                 <button type="button" class="btn btn-danger mr-3 cancel-btn">Cancel</button>
-                                <button type="submit" id="submit" class="btn btn-primary">Tambah</button>
+                                <input type="submit" class="btn btn-primary" value="Save">
                             </div>
                         </form>
                     </div>
@@ -64,22 +63,21 @@ if (isset($_SESSION['user'])) {
             $('.cancel-btn').on('click', function() {
                 $('.content-inner').load('table_mhs.php');
             });
-
-            $('#insertForm').on('#submit', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'insert_mhs.php',
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        alert(response)
-                        $('.content-inner').load('table_mhs.php');
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan saat menghubungi server.');
-                    }
-                });
-            });
+            // $('#insertForm').on('#submit', function(e) {
+            //     e.preventDefault();
+            //     $.ajax({
+            //         url: 'insert_mhs.php',
+            //         type: 'POST',
+            //         data: $(this).serialize(),
+            //         success: function(response) {
+            //             alert(response)
+            //             $('.content-inner').load('table_mhs.php');
+            //         },
+            //         error: function() {
+            //             alert('Terjadi kesalahan saat menghubungi server.');
+            //         }
+            //     });
+            // });
         });
     </script>
 

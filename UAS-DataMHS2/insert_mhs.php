@@ -1,7 +1,7 @@
 <?php
-include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
+    include 'supabaseConnect.php';
     // Mengambil data dari form
     $nim = $_POST['nim_mhs'];
     $nama_mhs = $_POST['nama_mhs'];

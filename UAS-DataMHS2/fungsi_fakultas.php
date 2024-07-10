@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
 
     $table = 'fakultas';
     $data = [
-        'kode_faku' => $fakultas_mhs,
+        'kode' => $fakultas_mhs,
         'kode_jurusan' => $jurusan_mhs,
     ];
     $result = pg_insert($dbconn, $table, $data);

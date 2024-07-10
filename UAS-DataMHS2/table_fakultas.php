@@ -8,7 +8,7 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_fakultas = pg_fetch_all($result);
 ?>
-    <div class="container flex border rounded mt-3 bg-white p-3">
+    <div class="container flex border rounded bg-white p-3">
         <h1>Data Fakultas</h1>
         <div class="d-flex justify-content-end mt-2">
             <button id="insertFakultas" class="btn btn-primary">

@@ -21,7 +21,7 @@ session_start();
         <a href="#" class="btn btn-dark text-start" data-file="profil.php"><i class="fas fa-info-circle"></i> About Us</a>
     </div>
     <div class="content">
-        <div class="header">
+        <div class="header shadow">
             <div><!-- Placeholder for alignment --></div>
             <div class="d-flex align-items-center">
                 <a href="destroy_session.php" class="logout">Logout</a>
@@ -31,7 +31,7 @@ session_start();
                 </div>
             </div>
         </div>
-        <div class="content-inner d-flex justify-content-center">
+        <div class="content-inner d-flex justify-content-center shadow m-3 rounded">
         </div>
     </div>
 

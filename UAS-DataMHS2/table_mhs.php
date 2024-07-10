@@ -19,7 +19,7 @@ if (isset($_SESSION['user'])) {
     </head>
 
     <body>
-        <div id="formContainer" class="container flex border rounded mt-3 bg-white p-3">
+        <div id="formContainer" class="container flex border rounded bg-white p-3">
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Data Mahasiswa</h1>
                 <button class="btn btn-primary addNew">Insert</button>

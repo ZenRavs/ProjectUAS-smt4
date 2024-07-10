@@ -7,9 +7,9 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_prodi = pg_fetch_all($result);
 ?>
-    <div class="container flex border rounded mt-3 bg-white p-3">
+    <div class="container flex border rounded bg-white p-3">
         <h1>Data Jurusan</h1>
-        <form action="" method="POST" class="d-flex justify-content-end mt-2">
+        <form action="" method="POST" class="d-flex justify-content-end">
             <input class="btn btn-primary insertJurusan" type="button" value="Insert">
         </form>
 

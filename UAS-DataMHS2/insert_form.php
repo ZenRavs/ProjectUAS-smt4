@@ -9,14 +9,14 @@
 <body>
     <div class="container mt-3">
         <h2>Tambah Data Mahasiswa</h2>
-        <form action="insert_mahasiswa.php" method="post">
+        <form action="insert_mhs.php" method="post">
             <div class="form-group">
-                <label for="username_mhs">Faklutas</label>
-                <input type="text" class="form-control" id="username_mhs" name="username_mhs" required>
+                <label for="username">Faklutas</label>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="form-group">
-                <label for="password_mhs">Password:</label>
-                <input type="password" class="form-control" id="password_mhs" name="password_mhs" required>
+                <label for="password_mhs">Jurusan:</label>
+                <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
             </div>
             <div class="form-group">
                 <label for="nim">NIM:</label>

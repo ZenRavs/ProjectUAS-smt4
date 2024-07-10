@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-3">
         <h2>Tambah Data Mahasiswa</h2>
-        <form action="insert_mhs.php" method="post">
+        <form action="insert_mhs.php" method="POST">
             <div class="form-group">
                 <label for="username">Faklutas</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -19,8 +19,8 @@
                 <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
             </div>
             <div class="form-group">
-                <label for="nim">NIM:</label>
-                <input type="text" class="form-control" id="nim" name="nim" required>
+                <label for="nim_mhs">NIM:</label>
+                <input type="text" class="form-control" id="nim_mhs" name="nim" required>
             </div>
             <div class="form-group">
                 <label for="nama_mhs">Nama:</label>
@@ -42,7 +42,7 @@
                 <label for="tanggal_lahir">Tanggal Lahir:</label>
                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Tambah</button>
+            <button type="submit" class="btn btn-primary mt-3">Tambaha</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

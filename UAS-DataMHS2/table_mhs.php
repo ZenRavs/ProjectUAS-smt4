@@ -6,12 +6,12 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_mhs = pg_fetch_all($result);
 ?>
-    <div class="container flex border rounded mt-3 bg-white p-3">
+    <div id="formContainer" class="container flex border rounded mt-3 bg-white p-3">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Data Mahasiswa</h1>
-            <button id="addNew" class="btn btn-primary">Insert</button>
+            <button class="btn btn-primary addNew">Insert</button>
         </div>
-        <div id="formContainer"></div>
+        <div></div>
         <table class="table table-hover mt-2">
             <thead>
                 <tr>
@@ -72,26 +72,9 @@ if (isset($_SESSION['user'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#addNew').on('click', function() {
+            $('.addNew').on('click', function() {
                 $.ajax({
                     url: 'insert_form.php',
-                    type: 'GET',
-                    success: function(response) {
-                        $('#formContainer').html(response);
-                        $('#addNew').hide(); // Hide the "Insert" button
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan saat memuat form.');
-                    }
-                });
-            });
-
-            $('.edit-btn').on('click', function() {
-                var id = $(this).data('id');
-                $.ajax({
-                    url: 'edit_form.php',
-                    type: 'POST',
-                    data: { id_mhs: id },
                     success: function(response) {
                         $('#formContainer').html(response);
                     },
@@ -100,8 +83,7 @@ if (isset($_SESSION['user'])) {
                     }
                 });
             });
-
-            $(document).on('submit', '#insertForm', function(e) {
+            $(document).on('submit', '#formContainer', function(e) {
                 e.preventDefault();
                 $.ajax({
                     url: 'insert_mhs.php',
@@ -117,7 +99,25 @@ if (isset($_SESSION['user'])) {
                 });
             });
 
-            $(document).on('submit', '#editForm', function(e) {
+            $('.edit-btn').on('click', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'edit_form.php',
+                    type: 'POST',
+                    data: {
+                        id_mhs: id
+                    },
+                    success: function(response) {
+                        $('#formContainer').html(response);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
+
+
+            $(document).on('submit', '#formContainer', function(e) {
                 e.preventDefault();
                 $.ajax({
                     url: 'update_mhs.php',

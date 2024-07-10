@@ -34,7 +34,7 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <div class="form-group">
                         <label for="nim">NIM</label>
-                        <input type="text" class="form-control" id="nim" name="nim" value="<?php echo $mhs['nim']; ?>" required>
+                        <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" value="<?php echo $mhs['nim']; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="nama_mhs">Nama</label>

@@ -15,11 +15,25 @@ if (isset($_SESSION['user'])) {
                                 <div class="row flex">
                                     <div class="col-md-2">
                                         <label for="kode_faku">Fakultas</label>
-                                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
+                                        <select class="form-control" id="kode_faku" name="kode_faku" required>
+                                            <?php
+                                            $fakultas = array("Fakultas 1", "Fakultas 2", "Fakultas 3"); // replace with your database query
+                                            foreach ($fakultas as $faku) {
+                                                echo "<option value='$faku'>$faku</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md-2">
                                         <label for="kode_jurusan">Prodi</label>
-                                        <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                        <select class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                            <?php
+                                            $jurusan = array("Prodi 1", "Prodi 2", "Prodi 3"); // replace with your database query
+                                            foreach ($jurusan as $jur) {
+                                                echo "<option value='$jur'>$jur</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md">
                                         <label for="nim_mhs">NIM</label>

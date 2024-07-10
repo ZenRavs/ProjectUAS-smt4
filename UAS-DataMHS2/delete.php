@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
         $result = pg_delete($dbconn, 'mahasiswa', $id_mhs);
         if ($result) {
             // Kembali ke Halaman setelah hapus
-            header("Location: dashboard.php");
+            //header("Location: dashboard.php");
         } else {
             echo "Error: Could not delete record.";
         }

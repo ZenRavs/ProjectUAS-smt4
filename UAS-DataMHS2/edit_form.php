@@ -2,17 +2,27 @@
 include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
+    // Mengambil data mahasiswa berdasarkan ID
     $id_mhs = $_POST['id_mhs'];
-    $query = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";
-    $result = pg_query($dbconn, $query);
-    $mhs = pg_fetch_assoc($result);
+    $query_mhs = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";
+    $result_mhs = pg_query($dbconn, $query_mhs);
+    $mhs = pg_fetch_assoc($result_mhs);
+
+    // Mengambil data fakultas
+    $query_faku = "SELECT * FROM fakultas";
+    $result_faku = pg_query($dbconn, $query_faku);
+    $faku = pg_fetch_all($result_faku);
+
+    $query_jurusan = "SELECT * FROM jurusan";
+    $result_jurusan = pg_query($dbconn, $query_jurusan);
+    $jurusan = pg_fetch_all($result_jurusan);
 ?>
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Mahasiswa</title>
-        <link href="https://maxcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -24,17 +34,28 @@ if (isset($_SESSION['user'])) {
                             <h2 class="text-primary"> <?php echo $mhs['nama'] ?></h2>
                         </div>
                         <div class="card-body">
-                            <form id="editForm" method="post">
+                            <form action="edit_mhs.php" method="post">
                                 <input type="hidden" name="id_mhs" value="<?php echo $id_mhs ?>">
                                 <div class="form-group">
                                     <div class="row flex">
                                         <div class="col-md-2">
-                                            <label for="username">Faklutas</label>
-                                            <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
+                                            <div class="form-group">
+                                                <label for="combo-box">Fakultas</label>
+                                                <select class="form-control" id="combo-box" name="combo-box">
+                                                    <?php foreach ($faku as $option) { ?>
+                                                        <option value="<?php echo $option['kode']; ?>"><?php echo $option['fakultas']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label for="password_mhs">Jurusan</label>
-                                            <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="combo-box">Jurusan</label>
+                                                <select class="form-control" id="combo-box" name="combo-box">
+                                                    <?php foreach ($jurusan as $option) { ?>
+                                                        <option value="<?php echo $option['kode']; ?>"><?php echo $option['jurusan']; ?></option> <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-md">
                                             <label for="nim">NIM</label>
@@ -74,7 +95,7 @@ if (isset($_SESSION['user'])) {
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 <?php
 } else {

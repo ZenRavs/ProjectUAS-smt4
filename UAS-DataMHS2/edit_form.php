@@ -72,12 +72,11 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-            <<<<<<< HEAD <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
                 </script>
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                 </body>
-                =======
         </div>
     </div>
     <script>
@@ -87,7 +86,6 @@ if (isset($_SESSION['user'])) {
             });
         });
     </script>
-    >>>>>>> a0c96a2a7610f9cb8f5b7df3a1d2ae706b8c0112
 <?php
 } else {
     echo "Anda tidak memiliki akses.";

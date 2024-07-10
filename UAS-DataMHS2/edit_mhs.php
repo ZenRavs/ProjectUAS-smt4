@@ -6,9 +6,9 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     // Mengambil data dari form
     $id_mhs = $_POST['id_mhs'];
     $nim = $_POST['nim_mhs'];
-    $nama_mhs = $_POST['nama_mhs'];
     $fakultas_mhs = $_POST['kode_faku'];
     $jurusan_mhs = $_POST['kode_jurusan'];
+    $nama_mhs = $_POST['nama_mhs'];
     $alamat_mhs = $_POST['alamat_mhs'];
     $telp_mhs = $_POST['telp_mhs'];
     $email_mhs = $_POST['email_mhs'];

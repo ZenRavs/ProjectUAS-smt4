@@ -27,17 +27,19 @@ if (isset($_SESSION['user'])) {
                         <div class="card-body">
                             <form action="edit_mhs.php" method="post">
                                 <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs']; ?>">
-                                <div class="form-group">
-                                    <label for="username">Faklutas</label>
-                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $mhs['kode_fakultas']; ?>" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password_mhs">Jurusan</label>
-                                    <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nim">NIM</label>
-                                    <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" value="<?php echo $mhs['nim']; ?>" required>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="username">Faklutas</label>
+                                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password_mhs">Jurusan</label>
+                                        <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nim">NIM</label>
+                                        <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" value="<?php echo $mhs['nim']; ?>" required>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_mhs">Nama</label>
@@ -49,7 +51,7 @@ if (isset($_SESSION['user'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="telp_mhs">Telepon</label>
-                                    <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="<?php echo $mhs['telp']; ?>" required>
+                                    <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="+62<?php echo $mhs['telp']; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email_mhs">Email</label>

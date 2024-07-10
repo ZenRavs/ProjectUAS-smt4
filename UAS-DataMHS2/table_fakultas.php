@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
     <div class="container flex border rounded mt-3 bg-white p-3">
         <h1>Data Fakultas</h1>
         <div class="d-flex justify-content-end mt-2">
-            <button id="insertButton" class="btn btn-primary">
+            <button id="insertFakultas" class="btn btn-primary">
                 Insert
             </button>
         </div>

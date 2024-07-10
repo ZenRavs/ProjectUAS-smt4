@@ -38,119 +38,123 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-$(document).ready(function() {
-    $('.content-inner').load('dashboard_content.php');
-    $('.sidebar a').on('click', function(e) {
-        e.preventDefault();
-        var file = $(this).data('file');
-        $('.content-inner').load(file);
-    });
-    $(document).on('click', '.addNew', function() {
-        $.ajax({
-            url: 'insert_form.php',
-            success: function(response) {
-                $('.content-inner').html(response);
-            },
-            error: function() {
-                alert('Terjadi kesalahan saat memuat form.');
-            }
-        });
-    });
+        $(document).ready(function() {
+            $('.content-inner').load('dashboard_content.php');
+            $('.sidebar a').on('click', function(e) {
+                e.preventDefault();
+                var file = $(this).data('file');
+                $('.content-inner').load(file);
+            });
+            $(document).on('click', '.addNew', function() {
+                $.ajax({
+                    url: 'insert_form.php',
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
 
-    $(document).on('submit', '#insertForm', function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'insert_mhs.php',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                alert('Added!');
-                $('.content-inner').html(response);
-                $('.content-inner').load('table_mhs.php');
-            },
-            error: function() {
-                alert('Terjadi kesalahan saat menyimpan data.');
-            }
-        });
-    });
+            $(document).on('submit', '#insertForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Added!');
+                        $('.content-inner').html(response);
+                        $('.content-inner').load('table_mhs.php');
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menyimpan data.');
+                    }
+                });
+            });
 
-    $(document).on('click', '.edit-btn', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        $.ajax({
-            url: 'edit_form.php',
-            type: 'POST',
-            data: { id_mhs: id },
-            success: function(response) {
-                $('.content-inner').html(response);
-            }
-        });
-    });
+            $(document).on('click', '.edit-btn', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'edit_form.php',
+                    type: 'POST',
+                    data: {
+                        id_mhs: id
+                    },
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                    }
+                });
+            });
 
-    $(document).on('submit', '#editForm', function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'edit_mhs.php',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                alert('Changed!');
-                $('.content-inner').load('table_mhs.php');
-            }
-        });
-    });
+            $(document).on('submit', '#editForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'edit_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Changed!');
+                        $('.content-inner').load('table_mhs.php');
+                    }
+                });
+            });
 
-    // Add new script for inserting jurusan
-    $(document).on('click', '.insertJurusan', function() {
-        $.ajax({
-            url: 'insert_jurusanform.php',
-            success: function(response) {
-                $('.content-inner').html(response);
-            },
-            error: function() {
-                alert('Terjadi kesalahan saat memuat form.');
-            }
-        });
-    });
+            // Add new script for inserting jurusan
+            $(document).on('click', '#insertJurusan', function() {
+                $.ajax({
+                    url: 'insert_jurusanform.php',
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
 
-    $(document).on('submit', '#insertJurusanForm', function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'insert_jurusan.php',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                alert('Jurusan added!');
-                $('.content-inner').html(response);
-                $('.content-inner').load('table_jurusan.php');
-            },
-            error: function() {
-                alert('Terjadi kesalahan saat menyimpan data.');
-            }
-        });
-    });
+            $(document).on('submit', '#insertJurusanForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_jurusan.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Jurusan added!');
+                        $('.content-inner').html(response);
+                        $('.content-inner').load('table_jurusan.php');
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menyimpan data.');
+                    }
+                });
+            });
 
-    // Add new script for deleting jurusan
-    $(document).on('click', '.delete-jurusan', function(e) {
-        e.preventDefault();
-        var kodeJurusan = $(this).data('kode');
-        if (confirm('Are you sure you want to delete this jurusan?')) {
-            $.ajax({
-                url: 'delete_jurusan.php',
-                type: 'POST',
-                data: { kode_jurusan: kodeJurusan },
-                success: function(response) {
-                    alert(response);
-                    $('.content-inner').load('table_jurusan.php');
-                },
-                error: function() {
-                    alert('Terjadi kesalahan saat menghapus data.');
+            // Add new script for deleting jurusan
+            $(document).on('click', '.delete-jurusan', function(e) {
+                e.preventDefault();
+                var kodeJurusan = $(this).data('kode');
+                if (confirm('Are you sure you want to delete this jurusan?')) {
+                    $.ajax({
+                        url: 'delete_jurusan.php',
+                        type: 'POST',
+                        data: {
+                            kode_jurusan: kodeJurusan
+                        },
+                        success: function(response) {
+                            alert(response);
+                            $('.content-inner').load('table_jurusan.php');
+                        },
+                        error: function() {
+                            alert('Terjadi kesalahan saat menghapus data.');
+                        }
+                    });
                 }
             });
-        }
-    });
 
-    $('#insertButton').on('click', function() {
+            $(document).on('click', '#insertFakultas', function(e) {
                 $('.content-inner').load('fakultas_form.php');
             });
 
@@ -183,7 +187,9 @@ $(document).ready(function() {
                     $.ajax({
                         url: 'delete_fakultas.php',
                         type: 'POST',
-                        data: { id_faku: idFaku },
+                        data: {
+                            id_faku: idFaku
+                        },
                         success: function(response) {
                             var res = JSON.parse(response);
                             if (res.status === "success") {
@@ -199,7 +205,8 @@ $(document).ready(function() {
                     });
                 }
             });
-});
-</script>
+        });
+    </script>
 </body>
+
 </html>

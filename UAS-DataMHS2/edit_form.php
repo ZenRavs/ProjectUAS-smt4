@@ -72,17 +72,24 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                </body>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </div>
     </div>
     <script>
         $(document).ready(function() {
             $('.cancel-btn').on('click', function() {
-                $('.content-inner').load('table_mhs.php');
+                $.ajax({
+                    url: 'table_mhs.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $('.container').html(response);
+                    },
+                    error: function() {
+                        alert('Gagal memuat halaman.');
+                    }
+                });
             });
         });
     </script>

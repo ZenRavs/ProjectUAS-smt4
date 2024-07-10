@@ -2,7 +2,6 @@
 include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
-    // Mengambil data mahasiswa berdasarkan ID
     $id_mhs = $_POST['id_mhs'];
     $query = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";
     $result = pg_query($dbconn, $query);
@@ -13,7 +12,7 @@ if (isset($_SESSION['user'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Mahasiswa</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -25,7 +24,7 @@ if (isset($_SESSION['user'])) {
                             <h2 class="text-primary"> <?php echo $mhs['nama'] ?></h2>
                         </div>
                         <div class="card-body">
-                            <form action="edit_mhs.php" method="post">
+                            <form id="editForm" method="post">
                                 <input type="hidden" name="id_mhs" value="<?php echo $id_mhs ?>">
                                 <div class="form-group">
                                     <div class="row flex">
@@ -75,7 +74,7 @@ if (isset($_SESSION['user'])) {
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 <?php
 } else {

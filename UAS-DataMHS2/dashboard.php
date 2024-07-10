@@ -47,10 +47,34 @@ session_start();
                 var file = $(this).data('file');
                 $('.content-inner').load(file);
             });
+
+            $(document).on('click', '.edit-btn', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'edit_form.php',
+                    type: 'POST',
+                    data: { id_mhs: id },
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                    }
+                });
+            });
+
+            $(document).on('submit', '#editForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'edit_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Data berhasil diperbarui');
+                        $('.content-inner').load('table_mhs.php');
+                    }
+                });
+            });
         });
     </script>
 </body>
 
 </html>
-
-<!-- this is addition -->

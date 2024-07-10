@@ -54,7 +54,9 @@ session_start();
                 $.ajax({
                     url: 'edit_form.php',
                     type: 'POST',
-                    data: { id_mhs: id },
+                    data: {
+                        id_mhs: id
+                    },
                     success: function(response) {
                         $('.content-inner').html(response);
                     }

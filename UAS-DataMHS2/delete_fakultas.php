@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 include 'supabaseConnect.php';
 session_start();
 
@@ -21,4 +21,4 @@ if (isset($_SESSION['user'])) {
 } else {
     echo json_encode(["status" => "error", "message" => "Invalid request."]);
 }
-?>
+?> -->

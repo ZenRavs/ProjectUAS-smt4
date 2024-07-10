@@ -16,9 +16,9 @@ if (isset($_SESSION['user'])) {
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No.</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Kode</th>
-                    <th scope="col">Jurusan</th>
+                    <th scope="col">Kode Jurusan</th>
+                    <th scope="col">Kode Fakultas</th>
+                    <th scope="col">Nama Jurusan</th>
                     <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
@@ -29,8 +29,8 @@ if (isset($_SESSION['user'])) {
                 ?>
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
-                        <td><?php echo $prodi['id_jurusan'] ?></td>
                         <td><?php echo $prodi['kode'] ?></td>
+                        <td><?php echo $prodi['kode_faku'] ?></td>
                         <td><?php echo $prodi['jurusan'] ?></td>
                         <td class="text-center">
                             <div class="btn-group">

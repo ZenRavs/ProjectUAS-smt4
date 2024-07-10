@@ -19,6 +19,24 @@ if (isset($_SESSION['user'])) {
                                 <label for="nama_jurusan">Nama Jurusan</label>
                                 <input type="text" class="form-control" id="nama_jurusan" name="nama_jurusan" required>
                             </div>
+                            <div class="col-md-2">
+                                <label for="kode_faku">Fakultas</label>
+                                <select class="form-control" id="kode_faku" name="kode_faku" required>
+                                    <?php
+                                    include 'supabaseConnect.php';
+                                    $query = "SELECT * FROM fakultas";
+                                    $result = pg_query($dbconn, $query);
+                                    $data_faku = pg_fetch_all($result);
+                                    if ($data_faku) {
+                                        foreach ($data_faku as $data) {
+                                            echo "<option value='{$data['kode']}'>{$data['kode']}~{$data['fakultas']}</option>";
+                                        }
+                                    } else {
+                                        echo "<option value=''>No fakultas found</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                             <div class="col mt-4">
                                 <button type="button" class="btn btn-danger mr-3 cancel-btn">Cancel</button>
                                 <button type="submit" class="btn btn-primary mr-3 insert-btn">Save</button>

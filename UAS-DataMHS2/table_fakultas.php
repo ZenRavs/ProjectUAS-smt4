@@ -49,7 +49,6 @@ if (isset($_SESSION['user'])) {
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No.</th>
-                    <th scope="col">ID</th>
                     <th scope="col">Kode Fakultas</th>
                     <th scope="col">Nama Fakultas</th>
                     <th scope="col" class="text-center">Action</th>
@@ -63,7 +62,6 @@ if (isset($_SESSION['user'])) {
                 ?>
                         <tr>
                             <td class="text-center"><?php echo $i ?></td>
-                            <td><?php echo $faku['id_faku'] ?></td>
                             <td><?php echo $faku['kode'] ?></td>
                             <td><?php echo $faku['fakultas'] ?></td>
                             <td class="text-center">

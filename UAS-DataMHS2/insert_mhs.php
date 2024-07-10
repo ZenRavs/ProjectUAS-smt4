@@ -1,59 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include 'supabaseConnect.php';
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Mahasiswa</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
+if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Mengambil data dari form
+    $id_mhs = $_POST['id_mhs'];
+    $nim = $_POST['nim_mhs'];
+    $nama_mhs = $_POST['nama_mhs'];
+    $fakultas_mhs = $_POST['kode_faku'];
+    $jurusan_mhs = $_POST['kode_jurusan'];
+    $alamat_mhs = $_POST['alamat_mhs'];
+    $telp_mhs = $_POST['telp_mhs'];
+    $email_mhs = $_POST['email_mhs'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
 
-<body>
-    <div class="container mt-2 mb-2">
-        <h2>Form Mahasiswa</h2>
-        <form action="dashboard.php">
-            <div>
-                <label for="id_mhs">ID Mahasiswa:</label>
-                <input type="text" class="form-control" id="id_mhs" name="id_mhs">
-            </div>
-            <div class="form-group">
-                <label for="username_mhs">Username:</label>
-                <input type="text" class="form-control" id="username_mhs" name="username_mhs">
-            </div>
-            <div class="form-group">
-                <label for="password_mhs">Password:</label>
-                <input type="password" class="form-control" id="password_mhs" name="password_mhs">
-            </div>
-            <div class="form-group">
-                <label for="nim">NIM:</label>
-                <input type="text" class="form-control" id="nim" name="nim">
-            </div>
-            <div class="form-group">
-                <label for="nama_mhs">Nama:</label>
-                <input type="text" class="form-control" id="nama_mhs" name="nama_mhs">
-            </div>
-            <div class="form-group">
-                <label for="alamat_mhs">Alamat:</label>
-                <textarea class="form-control" id="alamat_mhs" name="alamat_mhs"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="telp_mhs">Telepon:</label>
-                <input type="text" class="form-control" id="telp_mhs" name="telp_mhs">
-            </div>
-            <div class="form-group">
-                <label for="email_mhs">Email:</label>
-                <input type="email" class="form-control" id="email_mhs" name="email_mhs">
-            </div>
-            <div class="form-group">
-                <label for="tanggal_lahir">Tanggal Lahir:</label>
-                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
-            </div>
-            <button type="submit" class="btn btn-primary">SIMPAN</button>
-        </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    // Menyiapkan pernyataan SQL untuk mengupdate data
+    $table = 'mahasiswa';
+    $data = [
+        'nim' => $nim,
+        'nama' => $nama_mhs,
+        'kode_fakultas' => $fakultas_mhs,
+        'kode_jurusan' => $jurusan_mhs,
+        'alamat' => $alamat_mhs,
+        'telp' => $telp_mhs,
+        'email' => $email_mhs,
+        'tanggal_lahir' => $tanggal_lahir
+    ];
+    $condition = ['id_mhs' => $id_mhs];
 
-</html>
+    $result = pg_update($dbconn, $table, $data, $condition);
+    // Mengeksekusi pernyataan SQL
+    if ($result) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . pg_last_error($dbconn);
+    }
+    header('location: dashboard.php');
+    // Menutup koneksi
+    pg_close($dbconn);
+} else {
+    echo "Invalid request.";
+}

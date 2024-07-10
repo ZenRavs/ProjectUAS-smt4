@@ -14,7 +14,7 @@ session_start();
 
 <body>
     <div class="sidebar">
-        <h4 class="mb-2"><i class="fas fa-database"></i> PENDATAAN MAHASISWAaaa</h4>
+        <h4 class="mb-2"><i class="fas fa-database"></i> PENDATAAN MAHASISWA</h4>
         <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php"><i class="fas fa-user-graduate"></i> Data Mahasiswa</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php"><i class="fas fa-university"></i> Data Fakultas</a>
@@ -130,8 +130,29 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Add new script for deleting jurusan
+    $(document).on('click', '.delete-jurusan', function(e) {
+        e.preventDefault();
+        var kodeJurusan = $(this).data('kode');
+        if (confirm('Are you sure you want to delete this jurusan?')) {
+            $.ajax({
+                url: 'delete_jurusan.php',
+                type: 'POST',
+                data: { kode_jurusan: kodeJurusan },
+                success: function(response) {
+                    alert(response);
+                    $('.content-inner').load('table_jurusan.php');
+                },
+                error: function() {
+                    alert('Terjadi kesalahan saat menghapus data.');
+                }
+            });
+        }
+    });
 });
 </script>
+
 
 
 </body>

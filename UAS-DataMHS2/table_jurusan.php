@@ -1,6 +1,7 @@
 <?php
 include 'supabaseConnect.php';
 session_start();
+
 if (isset($_SESSION['user'])) {
     $query = "SELECT * FROM jurusan";
     $result = pg_query($dbconn, $query);
@@ -25,32 +26,34 @@ if (isset($_SESSION['user'])) {
             <tbody>
                 <?php
                 $i = 1;
-                foreach ($data_prodi as $prodi) {
+                if ($data_prodi) {
+                    foreach ($data_prodi as $prodi) {
                 ?>
-                    <tr>
-                        <td class="text-center"><?php echo $i ?></td>
-                        <td><?php echo $prodi['kode'] ?></td>
-                        <td><?php echo $prodi['kode_faku'] ?></td>
-                        <td><?php echo $prodi['jurusan'] ?></td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <div class="row g-2">
-                                    <div class="col md-0">
-                                    </div>
-                                    <div class="col md-0">
-                                        <form action="" method="get">
-                                            <input class="btn btn-sm btn-danger" type="submit" value="Delete">
-                                        </form>
+                        <tr>
+                            <td class="text-center"><?php echo $i ?></td>
+                            <td><?php echo $prodi['kode'] ?></td>
+                            <td><?php echo $prodi['kode_faku'] ?></td>
+                            <td><?php echo $prodi['jurusan'] ?></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <div class="row g-2">
+                                        <div class="col md-0">
+                                        </div>
+                                        <div class="col md-0">
+                                            <button class="btn btn-sm btn-danger delete-jurusan" data-kode="<?php echo $prodi['kode'] ?>">Delete</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-            </tbody>
-        <?php
-                    $i++;
+                            </td>
+                        </tr>
+                <?php
+                        $i++;
+                    }
+                } else {
+                    echo '<tr><td colspan="5" class="text-center">No data available.</td></tr>';
                 }
-        ?>
+                ?>
+            </tbody>
         </table>
     </div>
     <link rel="stylesheet" href="styles/style.css">
@@ -65,3 +68,4 @@ if (isset($_SESSION['user'])) {
 } else {
     header("location: index.php");
 }
+?>

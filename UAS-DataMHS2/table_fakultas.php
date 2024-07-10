@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
         <h1>Data Fakultas</h1>
         <form action="" method="POST" class="d-flex justify-content-end mt-2">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">
-                Inserta
+                Insert
             </button>
         </form>
 
@@ -37,7 +37,7 @@ if (isset($_SESSION['user'])) {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>

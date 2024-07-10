@@ -53,7 +53,7 @@ if (isset($_SESSION['user'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="telp_mhs">Telepon</label>
-                                    <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="+62<?php echo $mhs['telp']; ?>" required>
+                                    <input type="text" class="form-control" id="telp_mhs" name="telp_mhs" value="<?php echo $mhs['telp']; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email_mhs">Email</label>

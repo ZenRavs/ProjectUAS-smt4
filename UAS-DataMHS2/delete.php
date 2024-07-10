@@ -1,19 +1,15 @@
 <?php
 include 'supabaseConnect.php';
 session_start();
-
+$id_mhs = $_POST['id_mhs'];
+print_r($_POST);
 if (isset($_SESSION['user'])) {
     if (isset($_POST['id_mhs'])) {
-        $id_mhs = $_POST['id_mhs'];
-
         // Memanggil Query
-        $query = "DELETE FROM mahasiswa WHERE id_mhs = $1";
-        $result = pg_delete($dbconn, 'mahasiswa', $condition);
-
+        $result = pg_delete($dbconn, 'mahasiswa', $id_mhs);
         if ($result) {
             // Kembali ke Halaman setelah hapus
             header("Location: dashboard.php");
-
         } else {
             echo "Error: Could not delete record.";
         }
@@ -23,4 +19,3 @@ if (isset($_SESSION['user'])) {
 } else {
     header("Location: index.php");
 }
-?>

@@ -103,7 +103,7 @@ session_start();
             });
 
             // Add new script for inserting jurusan
-            $(document).on('click', '#insertJurusan', function() {
+            $(document).on('click', '.insertJurusan', function() {
                 $.ajax({
                     url: 'insert_jurusanform.php',
                     success: function(response) {

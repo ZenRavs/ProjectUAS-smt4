@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
                         <h2 class="text-primary">Tambah Data Mahasiswa</h2>
                     </div>
                     <div class="card-body">
-                        <form action="insert_mhs.php" id="insertForm" method="post">
+                        <form id="insertForm" action="insert_mhs.php" method="post">
                             <div class="form-group">
                                 <div class="row flex">
                                     <div class="col-md-2">
@@ -49,7 +49,8 @@ if (isset($_SESSION['user'])) {
                             </div>
                             <div class="col mt-4">
                                 <button type="button" class="btn btn-danger mr-3 cancel-btn">Cancel</button>
-                                <input type="submit" class="btn btn-primary" value="Save">
+                                <button type="submit" class="btn btn-primary mr-3 insert-btn">Save</button>
+                                <!-- <input type="submit" class="btn btn-primary" value="Save"> -->
                             </div>
                         </form>
                     </div>

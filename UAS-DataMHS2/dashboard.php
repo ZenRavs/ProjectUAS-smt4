@@ -58,6 +58,19 @@ session_start();
                 });
             });
 
+            $(document).on('submit', '#insertForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_form.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                        alert('Added!');
+                        $('.content-inner').load('table_mhs.php');
+                    }
+                });
+            });
+
             $(document).on('click', '.edit-btn', function(e) {
                 e.preventDefault();
                 var id = $(this).data('id');
@@ -80,7 +93,7 @@ session_start();
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
-                        alert('Data berhasil diperbarui');
+                        alert('Changed!');
                         $('.content-inner').load('table_mhs.php');
                     }
                 });

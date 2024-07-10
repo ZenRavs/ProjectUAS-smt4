@@ -27,15 +27,12 @@ session_start();
             <div class="d-flex align-items-center">
                 <a href="destroy_session.php" class="logout">Logout</a>
                 <span class="ms-3"><?php echo $_SESSION['user']['admin']; ?></span>
-
                 <div class="ms-3 d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; border-radius: 50%; background-color: #007bff; color: white;">
                     A
                 </div>
             </div>
         </div>
         <div class="content-inner d-flex justify-content-center">
-            <p></p>
-            <p></p>
         </div>
     </div>
 
@@ -48,6 +45,33 @@ session_start();
                 e.preventDefault();
                 var file = $(this).data('file');
                 $('.content-inner').load(file);
+            });
+            $(document).on('click', '.addNew', function() {
+                $.ajax({
+                    url: 'insert_form.php',
+                    success: function(response) {
+                        $('.content-inner').html(response);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memuat form.');
+                    }
+                });
+            });
+
+            $(document).on('submit', '.content-inner', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'insert_mhs.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response);
+                        location.reload(); // Refresh the table
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghubungi server.');
+                    }
+                });
             });
 
             $(document).on('click', '.edit-btn', function(e) {

@@ -1,8 +1,7 @@
 <?php
 include 'supabaseConnect.php';
 session_start();
-
-if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_SESSION['user'])) {
     // Mengambil data dari form
     $nim = $_POST['nim_mhs'];
     $nama_mhs = $_POST['nama_mhs'];
@@ -26,16 +25,6 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         'tanggal_lahir' => $tanggal_lahir
     ];
     $result = pg_insert($dbconn, $table, $data);
-
-    // Mengecek hasil eksekusi
-    if ($result) {
-        echo "Record added successfully";
-    } else {
-        echo "Error adding record: " . pg_last_error($dbconn);
-    }
-
-    // Menutup koneksi
-    pg_close($dbconn);
 } else {
     echo "Invalid request.";
 }

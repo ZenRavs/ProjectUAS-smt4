@@ -15,8 +15,8 @@ session_start();
         <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
         <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
-        <a href="#" class="btn btn-dark text-start" data-file="data_fakultas.php">Data Fakultas</a>
-        <a href="#" class="btn btn-dark text-start" data-file="data_jurusan.php">Data Jurusan</a>
+        <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php">Data Fakultas</a>
+        <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php">Data Jurusan</a>
         <a href="#" class="btn btn-dark text-start" data-file="profil.php">About</a>
     </div>
     <div class="content">

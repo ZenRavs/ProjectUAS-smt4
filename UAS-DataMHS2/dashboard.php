@@ -8,22 +8,24 @@ session_start();
     <title>Pendataan Mahasiswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../UAS-DataMHS2/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 
 <body>
     <div class="sidebar">
-        <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
-        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php">Data Fakultas</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php">Data Jurusan</a>
-        <a href="#" class="btn btn-dark text-start" data-file="profil.php">About</a>
+        <h4 class="mb-2"><i class="fas fa-database"></i> PENDATAAN MAHASISWA</h4>
+        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php"><i class="fas fa-user-graduate"></i> Data Mahasiswa</a>
+        <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php"><i class="fas fa-university"></i> Data Fakultas</a>
+        <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php"><i class="fas fa-book"></i> Data Jurusan</a>
+        <a href="#" class="btn btn-dark text-start" data-file="profil.php"><i class="fas fa-info-circle"></i> About Us</a>
     </div>
     <div class="content">
         <div class="header">
             <div><!-- Placeholder for alignment --></div>
             <div class="d-flex align-items-center">
-                <a href="destroy_session.php" class="logout">logout</a>
+                <a href="destroy_session.php" class="logout">Logout</a>
                 <span class="ms-3"><?php echo $_SESSION['user']['admin']; ?></span>
 
                 <div class="ms-3 d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; border-radius: 50%; background-color: #007bff; color: white;">
@@ -76,5 +78,6 @@ session_start();
         });
     </script>
 </body>
+
 
 </html>

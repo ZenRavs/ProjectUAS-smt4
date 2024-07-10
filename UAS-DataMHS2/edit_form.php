@@ -25,8 +25,8 @@ if (isset($_SESSION['user'])) {
                 <form action="edit_mhs.php" method="post">
                     <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs']; ?>">
                     <div class="form-group">
-                        <label for="username_mhs">Faklutas</label>
-                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
+                        <label for="username">Faklutas</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<?php echo $mhs['kode_fakultas']; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password_mhs">Jurusan</label>

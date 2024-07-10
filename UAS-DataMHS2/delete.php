@@ -6,7 +6,6 @@ $id_mhs = ['id_mhs' => $_POST['id_mhs']];
 print_r($_POST);
 if (isset($_SESSION['user'])) {
     if (isset($_POST['id_mhs'])) {
-
         // Memanggil Query
         $result = pg_delete($dbconn, 'mahasiswa', $id_mhs);
         if ($result) {

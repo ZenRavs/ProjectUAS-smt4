@@ -1,6 +1,14 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
+    include 'supabaseConnect.php';
+    $query_faku = "SELECT * FROM fakultas";
+    $result_faku = pg_query($dbconn, $query_faku);
+    $data_faku = pg_fetch_all($result_faku);
+
+    $query_jurusan = "SELECT * FROM jurusan";
+    $result_jurusan = pg_query($dbconn, $query_jurusan);
+    $data_jurusan = pg_fetch_all($result_jurusan);
 ?>
     <div class="container mt-3 mb-3">
         <div class="row justify-content-center">
@@ -15,11 +23,27 @@ if (isset($_SESSION['user'])) {
                                 <div class="row flex">
                                     <div class="col-md-2">
                                         <label for="kode_faku">Fakultas</label>
-                                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
+                                        <select class="form-control" id="kode_faku" name="kode_faku" required>
+                                            <?php // replace with your database query
+                                            foreach ($data_faku as $faku) {
+                                            ?>
+                                                <option name="<?php $faku['kode'] ?>"><?php echo $faku['fakultas'] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="kode_jurusan">Prodi</label>
-                                        <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                        <label for="kode_jurusan">Jurusan</label>
+                                        <select class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                            <?php // replace with your database query
+                                            foreach ($data_jurusan as $jurusan) {
+                                            ?>
+                                                <option name="<?php $jurusan['kode'] ?>"><?php echo $jurusan['jurusan'] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md">
                                         <label for="nim_mhs">NIM</label>

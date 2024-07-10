@@ -2,32 +2,30 @@
 include 'supabaseConnect.php';
 session_start();
 
-try {
 if (isset($_SESSION['user'])) {
-    // Mengambil data dari form
-    $faku = $_POST['kode'];
-    $fakultas = $_POST['fakultas'];
-    print_r ($_POST);
+    try {
+        // Mengambil data dari form
+        $faku = $_POST['kode'];
+        $fakultas = $_POST['fakultas'];
 
-    //perintah sql
-    $table = 'fakultas';
-    $data = [
-        'kode' => $faku,
-        'fakultas' => $fakultas,
-    ];
+        //perintah sql
+        $table = 'fakultas';
+        $data = [
+            'kode' => $faku,
+            'fakultas' => $fakultas,
+        ];
 
-    $result = pg_insert($dbconn, $table, $data);
-?>
-    <script>
-        $(document).ready(function() {
-            $('.content-inner').load('table_fakultas.php');
-        });
-    </script>
+        $result = pg_insert($dbconn, $table, $data);
 
-<?php
+        if ($result) {
+            echo json_encode(["status" => "success"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Could not insert record."]);
+        }
+    } catch (Exception $e) {
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    }
 } else {
-    echo "Invalid request.";
+    echo json_encode(["status" => "error", "message" => "Invalid request."]);
 }
-} catch (Exception $e) {
-    
-}
+?>

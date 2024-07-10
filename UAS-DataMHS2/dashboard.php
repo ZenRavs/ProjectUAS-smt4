@@ -11,7 +11,6 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-
 <body>
     <div class="sidebar">
         <h4 class="mb-2"><i class="fas fa-database"></i> PENDATAAN MAHASISWA</h4>
@@ -150,11 +149,57 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#insertButton').on('click', function() {
+                $('.content-inner').load('fakultas_form.php');
+            });
+
+            $(document).on('submit', '#insertFakultasForm', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'fungsi_fakultas.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        var res = JSON.parse(response);
+                        if (res.status === "success") {
+                            alert('Fakultas added!');
+                            $('#insertFakultasForm')[0].reset();
+                            $('.content-inner').load('table_fakultas.php');
+                        } else {
+                            alert('Error: ' + res.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menyimpan data.');
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete-fakultas', function(e) {
+                e.preventDefault();
+                var idFaku = $(this).data('id');
+                if (confirm('Are you sure you want to delete this fakultas?')) {
+                    $.ajax({
+                        url: 'delete_fakultas.php',
+                        type: 'POST',
+                        data: { id_faku: idFaku },
+                        success: function(response) {
+                            var res = JSON.parse(response);
+                            if (res.status === "success") {
+                                alert('Fakultas deleted!');
+                                $('.content-inner').load('table_fakultas.php');
+                            } else {
+                                alert('Error: ' + res.message);
+                            }
+                        },
+                        error: function() {
+                            alert('Terjadi kesalahan saat menghapus data.');
+                        }
+                    });
+                }
+            });
 });
 </script>
-
-
-
 </body>
-
 </html>

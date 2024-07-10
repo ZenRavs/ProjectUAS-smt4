@@ -10,39 +10,10 @@ if (isset($_SESSION['user'])) {
 ?>
     <div class="container flex border rounded mt-3 bg-white p-3">
         <h1>Data Fakultas</h1>
-        <form action="" method="POST" class="d-flex justify-content-end mt-2">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">
+        <div class="d-flex justify-content-end mt-2">
+            <button id="insertButton" class="btn btn-primary">
                 Insert
             </button>
-        </form>
-
-        <!-- Insert Modal -->
-        <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="insertModalLabel">Insert New Fakultas</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <form action="fungsi_fakultas.php" method="POST">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="kode" class="form-label">kode Fakultas</label>
-                                <input type="text" class="form-control" id="kode" name="kode" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fakultas" class="form-label">nama Fakultas</label>
-                                <input type="text" class="form-control" id="fakultas" name="fakultas" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
 
         <table class="table table-hover mt-2">
@@ -65,25 +36,14 @@ if (isset($_SESSION['user'])) {
                             <td><?php echo $faku['kode'] ?></td>
                             <td><?php echo $faku['fakultas'] ?></td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <div class="row g-2">
-                                        <div class="col md-0">
-                                        </div>
-                                        <div class="col md-0">
-                                            <form action="delete_fakultas.php" method="get">
-                                                <input type="hidden" name="delete_id" value="<?php echo $faku['id_faku']; ?>">
-                                                <input class="btn btn-sm btn-danger" type="submit" value="Delete">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button class="btn btn-sm btn-danger delete-fakultas" data-id="<?php echo $faku['id_faku']; ?>">Delete</button>
                             </td>
                         </tr>
                 <?php
                         $i++;
                     }
                 } else {
-                    echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                    echo "<tr><td colspan='4' class='text-center'>No data found</td></tr>";
                 }
                 ?>
             </tbody>

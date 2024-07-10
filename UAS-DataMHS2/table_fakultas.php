@@ -29,11 +29,11 @@ if (isset($_SESSION['user'])) {
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="kode" class="form-label">kode Fakultas</label>
-                                <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
+                                <input type="text" class="form-control" id="kode" name="kode" required>
                             </div>
                             <div class="mb-3">
-                                <label for="kode_jurusan" class="form-label">nama Fakultas</label>
-                                <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                <label for="fakultas" class="form-label">nama Fakultas</label>
+                                <input type="text" class="form-control" id="fakultas" name="fakultas" required>
                             </div>
                         </div>
                         <div class="modal-footer">

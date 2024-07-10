@@ -14,10 +14,18 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $tanggal_lahir = $_POST['tanggal_lahir'];
 
     // Menyiapkan pernyataan SQL untuk menambah data
-    $query = "INSERT INTO mahasiswa (nim, nama,kode_fakultas, kode_jurusan, alamat, telp, email, tanggal_lahir) 
-              VALUES ('$nim', '$nama_mhs', '$fakultas_mhs', '$jurusan_mhs', '$alamat_mhs', '$telp_mhs', '$email_mhs', '$tanggal_lahir')";
-
-    $result = pg_insert($dbconn);
+    $table = 'mahasiswa';
+    $data = [
+        'nim' => $nim,
+        'nama' => $nama_mhs,
+        'kode_fakultas' => $fakultas_mhs,
+        'kode_jurusan' => $jurusan_mhs,
+        'alamat' => $alamat_mhs,
+        'telp' => $telp_mhs,
+        'email' => $email_mhs,
+        'tanggal_lahir' => $tanggal_lahir
+    ];
+    $result = pg_insert($dbconn, $table, $data);
 
     // Mengecek hasil eksekusi
     if ($result) {

@@ -1,29 +1,58 @@
 <?php
+include 'supabaseConnect.php';
 session_start();
+
 if (isset($_SESSION['user'])) {
-    include 'supabaseConnect.php';
     // Mengambil data mahasiswa berdasarkan ID
     $id_mhs = $_POST['id_mhs'];
     $query_mhs = "SELECT * FROM mahasiswa WHERE id_mhs = $id_mhs";
     $result_mhs = pg_query($dbconn, $query_mhs);
+
+    if (!$result_mhs) {
+        echo "Error fetching mahasiswa data: " . pg_last_error($dbconn);
+        exit;
+    }
+
     $mhs = pg_fetch_assoc($result_mhs);
 
     // Mengambil data fakultas
     $query_faku = "SELECT * FROM fakultas";
     $result_faku = pg_query($dbconn, $query_faku);
+
+    if (!$result_faku) {
+        echo "Error fetching fakultas data: " . pg_last_error($dbconn);
+        exit;
+    }
+
     $faku = pg_fetch_all($result_faku);
 
+    // Mengambil data jurusan
     $query_jurusan = "SELECT * FROM jurusan";
     $result_jurusan = pg_query($dbconn, $query_jurusan);
+
+    if (!$result_jurusan) {
+        echo "Error fetching jurusan data: " . pg_last_error($dbconn);
+        exit;
+    }
+
     $jurusan = pg_fetch_all($result_jurusan);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
     <div class="container mt-3 mb-3">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card shadow">
                     <div class="card-header">
-                        <h2 class="text-primary"> <?php echo $mhs['nama'] ?></h2>
+                        <h2 class="text-primary"><?php echo $mhs['nama'] ?></h2>
                     </div>
                     <div class="card-body">
                         <form id="editForm" method="post">
@@ -31,12 +60,34 @@ if (isset($_SESSION['user'])) {
                             <div class="form-group">
                                 <div class="row flex">
                                     <div class="col-md-2">
-                                        <label for="username">Fakultas</label>
-                                        <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
+                                        <label for="kode_faku">Fakultas</label>
+                                        <select class="form-control" id="kode_faku" name="kode_faku" required>
+                                            <?php
+                                            if ($faku) {
+                                                foreach ($faku as $f) {
+                                                    $selected = ($mhs['kode_fakultas'] == $f['kode']) ? 'selected' : '';
+                                                    echo "<option value='{$f['kode']}' $selected>{$f['kode']}~{$f['fakultas']}</option>";
+                                                }
+                                            } else {
+                                                echo "<option value=''>No fakultas found</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="password_mhs">Jurusan</label>
-                                        <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
+                                        <label for="kode_jurusan">Jurusan</label>
+                                        <select class="form-control" id="kode_jurusan" name="kode_jurusan" required>
+                                            <?php
+                                            if ($jurusan) {
+                                                foreach ($jurusan as $j) {
+                                                    $selected = ($mhs['kode_jurusan'] == $j['kode']) ? 'selected' : '';
+                                                    echo "<option value='{$j['kode']}' $selected>{$j['kode']}~{$j['jurusan']}</option>";
+                                                }
+                                            } else {
+                                                echo "<option value=''>No jurusan found</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md">
                                         <label for="nim">NIM</label>
@@ -93,6 +144,9 @@ if (isset($_SESSION['user'])) {
             });
         });
     </script>
+</body>
+</html>
+
 <?php
 } else {
     echo "Anda tidak memiliki akses.";

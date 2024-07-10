@@ -24,11 +24,9 @@ if (isset($_SESSION['user'])) {
                                     <div class="col-md-2">
                                         <label for="kode_faku">Fakultas</label>
                                         <select class="form-control" id="kode_faku" name="kode_faku" required>
-                                            <?php // replace with your database query
-                                            foreach ($data_faku as $faku) {
-                                            ?>
-                                                <option name="<?php $faku['kode'] ?>"><?php echo $faku['fakultas'] ?></option>
                                             <?php
+                                            foreach ($data_faku as $faku) {
+                                                echo "<option value='{$faku['kode']}'>{$faku['kode']}~{$faku['fakultas']}</option>";
                                             }
                                             ?>
                                         </select>
@@ -36,11 +34,9 @@ if (isset($_SESSION['user'])) {
                                     <div class="col-md-2">
                                         <label for="kode_jurusan">Jurusan</label>
                                         <select class="form-control" id="kode_jurusan" name="kode_jurusan" required>
-                                            <?php // replace with your database query
-                                            foreach ($data_jurusan as $jurusan) {
-                                            ?>
-                                                <option name="<?php $jurusan['kode'] ?>"><?php echo $jurusan['jurusan'] ?></option>
                                             <?php
+                                            foreach ($data_jurusan as $jurusan) {
+                                                echo "<option value='{$jurusan['kode']}'>{$jurusan['kode']}~{$jurusan['jurusan']}</option>";
                                             }
                                             ?>
                                         </select>

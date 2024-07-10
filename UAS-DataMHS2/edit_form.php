@@ -19,7 +19,7 @@ if (isset($_SESSION['user'])) {
     <body>
         <div class="container mt-3 mb-3">
             <div class="row justify-content-center">
-                <div class="col-lg-7">
+                <div class="col-lg-10">
                     <div class="card shadow">
                         <div class="card-header">
                             <h2>Edit ID '<?php echo $id_mhs ?>'</h2>
@@ -27,16 +27,16 @@ if (isset($_SESSION['user'])) {
                         <div class="card-body">
                             <form action="edit_mhs.php" method="post">
                                 <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs']; ?>">
-                                <div class="row">
-                                    <div class="form-group">
+                                <div class="row flex">
+                                    <div class="col-md-2">
                                         <label for="username">Faklutas</label>
                                         <input type="text" class="form-control" id="kode_faku" name="kode_faku" value="<?php echo $mhs['kode_fakultas']; ?>" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-2">
                                         <label for="password_mhs">Jurusan</label>
                                         <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" value="<?php echo $mhs['kode_jurusan']; ?>" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md">
                                         <label for="nim">NIM</label>
                                         <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" value="<?php echo $mhs['nim']; ?>" required>
                                     </div>

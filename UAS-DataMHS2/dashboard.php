@@ -13,7 +13,7 @@ session_start();
 <body>
     <div class="sidebar">
         <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
-        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
+        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARDaaaaaaaaaa</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php">Data Fakultas</a>
         <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php">Data Jurusan</a>

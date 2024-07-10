@@ -3,33 +3,6 @@ include 'supabaseConnect.php';
 session_start();
 
 if (isset($_SESSION['user'])) {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insert'])) {
-        // Capture the form data
-        $kode = $_POST['kode_faku'];
-        $fakultas = $_POST['fakultas'];
-
-        // Insert the new record into the database
-        $insert_query = "INSERT INTO fakultas (kode, fakultas) VALUES ($1, $2)";
-        $result = pg_query_params($dbconn, $insert_query, array($kode, $fakultas));
-
-        if ($result) {
-            echo "<script>alert('Record inserted successfully');</script>";
-        } else {
-            echo "<script>alert('Error inserting record');</script>";
-        }
-    }
-
-    if (isset($_GET['delete_id'])) {
-        $delete_id = $_GET['delete_id'];
-        $delete_query = "DELETE FROM fakultas WHERE id_faku = $1";
-        $result = pg_query_params($dbconn, $delete_query, array($delete_id));
-        
-        if ($result) {
-            echo "<script>alert('Record deleted successfully');</script>";
-        } else {
-            echo "<script>alert('Error deleting record');</script>";
-        }
-    }
 
     $query = "SELECT * FROM fakultas";
     $result = pg_query($dbconn, $query);

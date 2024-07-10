@@ -39,67 +39,70 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.content-inner').load('dashboard_content.php');
-            $('.sidebar a').on('click', function(e) {
-                e.preventDefault();
-                var file = $(this).data('file');
-                $('.content-inner').load(file);
-            });
-            $(document).on('click', '.addNew', function() {
-                $.ajax({
-                    url: 'insert_form.php',
-                    success: function(response) {
-                        $('.content-inner').html(response);
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan saat memuat form.');
-                    }
-                });
-            });
-
-            $(document).on('submit', '#insertForm', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'insert_form.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $('.content-inner').html(response);
-                        alert('Added!');
-                        $('.content-inner').load('table_mhs.php');
-                    }
-                });
-            });
-
-            $(document).on('click', '.edit-btn', function(e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                $.ajax({
-                    url: 'edit_form.php',
-                    type: 'POST',
-                    data: {
-                        id_mhs: id
-                    },
-                    success: function(response) {
-                        $('.content-inner').html(response);
-                    }
-                });
-            });
-
-            $(document).on('submit', '#editForm', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'edit_mhs.php',
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        alert('Changed!');
-                        $('.content-inner').load('table_mhs.php');
-                    }
-                });
-            });
+$(document).ready(function() {
+    $('.content-inner').load('dashboard_content.php');
+    $('.sidebar a').on('click', function(e) {
+        e.preventDefault();
+        var file = $(this).data('file');
+        $('.content-inner').load(file);
+    });
+    $(document).on('click', '.addNew', function() {
+        $.ajax({
+            url: 'insert_form.php',
+            success: function(response) {
+                $('.content-inner').html(response);
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat memuat form.');
+            }
         });
-    </script>
+    });
+
+    $(document).on('submit', '#insertForm', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'insert_mhs.php', // Perbaiki URL di sini
+            type: 'POST',
+            data: $(this).serialize(), // Tambahkan data yang akan dikirim
+            success: function(response) {
+                alert('Added!');
+                $('.content-inner').html(response); // Tampilkan respon dari server
+                $('.content-inner').load('table_mhs.php');
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat menyimpan data.');
+            }
+        });
+    });
+
+    $(document).on('click', '.edit-btn', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $.ajax({
+            url: 'edit_form.php',
+            type: 'POST',
+            data: { id_mhs: id },
+            success: function(response) {
+                $('.content-inner').html(response);
+            }
+        });
+    });
+
+    $(document).on('submit', '#editForm', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'edit_mhs.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert('Changed!');
+                $('.content-inner').load('table_mhs.php');
+            }
+        });
+    });
+});
+</script>
+
 </body>
 
 </html>

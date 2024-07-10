@@ -70,7 +70,6 @@ if (isset($_SESSION['user'])) {
                             <div class="col mt-4">
                                 <button type="button" class="btn btn-danger mr-3 cancel-btn">Cancel</button>
                                 <button type="submit" class="btn btn-primary mr-3 insert-btn">Save</button>
-                                <!-- <input type="submit" class="btn btn-primary" value="Save"> -->
                             </div>
                         </form>
                     </div>
@@ -85,7 +84,6 @@ if (isset($_SESSION['user'])) {
             });
         });
     </script>
-
 <?php
 } else {
     echo "Anda tidak memiliki akses.";

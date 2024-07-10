@@ -81,9 +81,5 @@ session_start();
     </script>
 </body>
 
-<<<<<<< HEAD
 
 </html>
-=======
-</html>
->>>>>>> f4c017822750f9449ac51c415a53d6efcdf89864

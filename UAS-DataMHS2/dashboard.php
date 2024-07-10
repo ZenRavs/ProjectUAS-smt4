@@ -61,12 +61,12 @@ $(document).ready(function() {
     $(document).on('submit', '#insertForm', function(e) {
         e.preventDefault();
         $.ajax({
-            url: 'insert_mhs.php', // Perbaiki URL di sini
+            url: 'insert_mhs.php',
             type: 'POST',
-            data: $(this).serialize(), // Tambahkan data yang akan dikirim
+            data: $(this).serialize(),
             success: function(response) {
                 alert('Added!');
-                $('.content-inner').html(response); // Tampilkan respon dari server
+                $('.content-inner').html(response);
                 $('.content-inner').load('table_mhs.php');
             },
             error: function() {
@@ -100,8 +100,39 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Add new script for inserting jurusan
+    $(document).on('click', '.insertJurusan', function() {
+        $.ajax({
+            url: 'insert_jurusanform.php',
+            success: function(response) {
+                $('.content-inner').html(response);
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat memuat form.');
+            }
+        });
+    });
+
+    $(document).on('submit', '#insertJurusanForm', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'insert_jurusan.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert('Jurusan added!');
+                $('.content-inner').html(response);
+                $('.content-inner').load('table_jurusan.php');
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat menyimpan data.');
+            }
+        });
+    });
 });
 </script>
+
 
 </body>
 

@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['user'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['insert'])) {
         // Capture the form data
-        $kode = $_POST['kode'];
+        $kode = $_POST['kode_faku'];
         $fakultas = $_POST['fakultas'];
 
         // Insert the new record into the database
@@ -54,16 +54,16 @@ if (isset($_SESSION['user'])) {
                     <form action="" method="POST">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="kode" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="kode" name="kode" required>
+                                <label for="kode" class="form-label">kode Fakultas</label>
+                                <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
                             </div>
                             <div class="mb-3">
-                                <label for="fakultas" class="form-label">Nama Fakultas</label>
-                                <input type="text" class="form-control" id="fakultas" name="fakultas" required>
+                                <label for="kode_jurusan" class="form-label">nama Fakultas</label>
+                                <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
                             <button type="submit" name="insert" class="btn btn-primary">Save</button>
                         </div>
                     </form>

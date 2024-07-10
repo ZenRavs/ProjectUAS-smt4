@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['user'])) {
 ?>
-    <div class="container mt-3 mb-3">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card shadow">

@@ -49,14 +49,6 @@ if (isset($_SESSION['user'])) {
                                     <div class="col md-0">
                                         <form action="edit_form.php" method="POST">
                                             <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
-                                            <input type="hidden" name="nim" value="<?php echo $mhs['nim'] ?>">
-                                            <input type="hidden" name="nama" value="<?php echo $mhs['nama'] ?>">
-                                            <input type="hidden" name="username" value="<?php echo $mhs['kode_fakultas'] ?>">
-                                            <input type="hidden" name="password" value="<?php echo $mhs['kode_jurusan'] ?>">
-                                            <input type="hidden" name="alamat" value="<?php echo $mhs['alamat'] ?>">
-                                            <input type="hidden" name="telp" value="<?php echo $mhs['telp'] ?>">
-                                            <input type="hidden" name="email" value="<?php echo $mhs['email'] ?>">
-                                            <input type="hidden" name="tanggal_lahir" value="<?php echo $mhs['tanggal_lahir'] ?>">
                                             <input class="btn btn-sm btn-primary" type="submit" value="Edit">
                                         </form>
                                     </div>

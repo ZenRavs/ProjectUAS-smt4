@@ -8,7 +8,7 @@ if (isset($_SESSION['user'])) {
 ?>
     <div class="container flex border rounded mt-3 bg-white p-3">
         <h1>Data Mahasiswa</h1>
-        <form action="" method="POST" class="d-flex justify-content-end mt-2">
+        <form action="insert_form.php" method="POST" class="d-flex justify-content-end mt-2">
             <input class="btn btn-primary" type="submit" value="Insert">
         </form>
         <table class="table table-hover mt-2">

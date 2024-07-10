@@ -27,7 +27,7 @@ if (isset($_SESSION['user'])) {
                                             <?php // replace with your database query
                                             foreach ($data_faku as $faku) {
                                             ?>
-                                                <option name="<?php $faku['kode'] ?>"><?php echo $faku['fakultas'] ?></option>
+                                                <option name="<?php $faku['kode'] ?>"><?php echo $faku['kode']; echo '~'.$faku['fakultas'] ?></option>
                                             <?php
                                             }
                                             ?>
@@ -39,7 +39,7 @@ if (isset($_SESSION['user'])) {
                                             <?php // replace with your database query
                                             foreach ($data_jurusan as $jurusan) {
                                             ?>
-                                                <option name="<?php $jurusan['kode'] ?>"><?php echo $jurusan['jurusan'] ?></option>
+                                                <option name="<?php $jurusan['kode'] ?>"><?php echo $jurusan['kode']; echo '~'.$jurusan['jurusan']?></option>
                                             <?php
                                             }
                                             ?>

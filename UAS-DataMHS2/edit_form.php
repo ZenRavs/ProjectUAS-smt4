@@ -65,8 +65,8 @@ if (isset($_SESSION['user'])) {
                                             <?php
                                             if ($faku) {
                                                 foreach ($faku as $f) {
-                                                    $selected = ($mhs['kode_fakultas'] == $f['kode_fakultas']) ? 'selected' : '';
-                                                    echo "<option value='{$f['kode_fakultas']}' $selected>{$f['nama_fakultas']}</option>";
+                                                    $selected = ($mhs['kode_fakultas'] == $f['kode']) ? 'selected' : '';
+                                                    echo "<option value='{$f['kode']}' $selected>{$f['kode']}~{$f['fakultas']}</option>";
                                                 }
                                             } else {
                                                 echo "<option value=''>No fakultas found</option>";
@@ -80,8 +80,8 @@ if (isset($_SESSION['user'])) {
                                             <?php
                                             if ($jurusan) {
                                                 foreach ($jurusan as $j) {
-                                                    $selected = ($mhs['kode_jurusan'] == $j['kode_jurusan']) ? 'selected' : '';
-                                                    echo "<option value='{$j['kode_jurusan']}' $selected>{$j['nama_jurusan']}</option>";
+                                                    $selected = ($mhs['kode_jurusan'] == $j['kode']) ? 'selected' : '';
+                                                    echo "<option value='{$j['kode']}' $selected>{$j['kode']}~{$j['jurusan']}</option>";
                                                 }
                                             } else {
                                                 echo "<option value=''>No jurusan found</option>";

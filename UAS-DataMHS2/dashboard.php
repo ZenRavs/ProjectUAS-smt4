@@ -41,7 +41,7 @@ session_start();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.content-inner').load('dashboard.content.php');
+            $('.content-inner').load('dashboard_content.php');
             $('.sidebar a').on('click', function(e) {
                 e.preventDefault();
                 var file = $(this).data('file');

@@ -24,14 +24,14 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #a1a1a1;
+    background-color: #5072c0;
 }
 
 .content {
     flex: 1;
     overflow-y: auto;
     position: relative;
-    background: #cacaca;
+    background: #dddddd;
 }
 
 .header {

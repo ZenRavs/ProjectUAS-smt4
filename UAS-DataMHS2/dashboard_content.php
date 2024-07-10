@@ -5,9 +5,11 @@ $query = "SELECT * FROM mahasiswa";
 $result = pg_query($dbconn, $query);
 $data_mhs = pg_fetch_all($result);
 ?>
-<div class="container m-2 bg-white rounded p-3">
-  <h1>Data Mahasiswa</h1>
-  <a href="download_report.php" class="btn btn-primary btn-download">Download Laporan</a>
+<div class="container mt-3 bg-white rounded p-3">
+  <h1>DASHBOARD</h1>
+  <div class=" d-flex justify-content-end mt-2">
+    <a href="download_report.php" class="btn btn-primary btn-download">Download Laporan</a>
+  </div>
   <table class="table table-hover table-striped mt-3">
     <thead>
       <tr>

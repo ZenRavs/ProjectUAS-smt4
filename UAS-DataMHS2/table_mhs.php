@@ -6,9 +6,10 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_mhs = pg_fetch_all($result);
 ?>
-    <div class="container flex border rounded m-2 bg-white">
-        <form action="include: insert_mhs.php" method="POST" class="d-flex justify-content-end mt-2">
-            <input class="btn btn-sm btn-primary" type="submit" value="Insert">
+    <div class="container flex border rounded mt-3 bg-white p-3">
+        <h1>Data Mahasiswa</h1>
+        <form action="" method="POST" class="d-flex justify-content-end mt-2">
+            <input class="btn btn-primary" type="submit" value="Insert">
         </form>
         <table class="table table-hover mt-2">
             <thead>
@@ -82,6 +83,7 @@ if (isset($_SESSION['user'])) {
         integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin = "anonymous"
     </script>
+
 <?php
 } else {
     header("location: index.php");

@@ -7,24 +7,12 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_mhs = $_POST['id_mhs'];
     $nim = $_POST['nim'];
     $nama_mhs = $_POST['nama'];
-    $fakultas_mhs = $_POST['kode_fakultas'];
+    $fakultas_mhs = $_POST['kode_faku'];
     $jurusan_mhs = $_POST['kode_jurusan'];
     $alamat_mhs = $_POST['alamat'];
     $telp_mhs = $_POST['telp'];
     $email_mhs = $_POST['email'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
-
-    
-    <td><?php echo $mhs['id_mhs'] ?></td>
-                        <td><?php echo $mhs['nim'] ?></td>
-                        <td><?php echo $mhs['nama'] ?></td>
-                        <td><?php echo $mhs['kode_fakultas'] ?></td>
-                        <td><?php echo $mhs['kode_jurusan'] ?></td>
-                        <td><?php echo $mhs['alamat'] ?></td>
-                        <td><?php echo $mhs['telp'] ?></td>
-                        <td><?php echo $mhs['email'] ?></td>
-                        <td><?php echo $mhs['tanggal_lahir'] ?></td>
-
 
     // Menyiapkan pernyataan SQL untuk mengupdate data
     $query = "UPDATE mahasiswa SET 
@@ -44,10 +32,9 @@ if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Error updating record: " . pg_last_error($dbconn);
     }
-
+    header('location: dashboard.php');
     // Menutup koneksi
     pg_close($dbconn);
 } else {
     echo "Invalid request.";
 }
-?>

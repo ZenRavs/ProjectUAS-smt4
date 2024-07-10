@@ -47,7 +47,7 @@ if (isset($_SESSION['user'])) {
                             <div class="btn-group">
                                 <div class="row g-2">
                                     <div class="col md-0">
-                                        <form action="edit_mhs.php" method="POST">
+                                        <form action="edit_form.php" method="POST">
                                             <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
                                             <input type="hidden" name="nim" value="<?php echo $mhs['nim'] ?>">
                                             <input type="hidden" name="nama" value="<?php echo $mhs['nama'] ?>">

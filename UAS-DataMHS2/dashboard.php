@@ -12,12 +12,16 @@ session_start();
 
 <body>
     <div class="sidebar">
-        <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
-        <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php">Data Fakultas</a>
-        <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php">Data Jurusan</a>
-        <a href="#" class="btn btn-dark text-start" data-file="profil.php">About</a>
+        <div class="d-flex align-items-start">
+            <h4 class="mb-2">PENDATAAN MAHASISWA</h4>
+        </div>
+        <div>
+            <a href="#" class="btn btn-dark text-start" data-file="dashboard_content.php">DASHBOARD</a>
+            <a href="#" class="btn btn-dark text-start" data-file="table_mhs.php">Data Mahasiswa</a>
+            <a href="#" class="btn btn-dark text-start" data-file="table_fakultas.php">Data Fakultas</a>
+            <a href="#" class="btn btn-dark text-start" data-file="table_jurusan.php">Data Jurusan</a>
+            <a href="#" class="btn btn-dark text-start" data-file="profil.php">About</a>
+        </div>
     </div>
     <div class="content">
         <div class="header">
@@ -54,7 +58,9 @@ session_start();
                 $.ajax({
                     url: 'edit_form.php',
                     type: 'POST',
-                    data: { id_mhs: id },
+                    data: {
+                        id_mhs: id
+                    },
                     success: function(response) {
                         $('.content-inner').html(response);
                     }

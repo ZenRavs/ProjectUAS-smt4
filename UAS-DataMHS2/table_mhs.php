@@ -50,8 +50,9 @@ if (isset($_SESSION['user'])) {
                                         <button class="btn btn-sm btn-primary edit-btn" data-id="<?php echo $mhs['id_mhs'] ?>">Edit</button>
                                     </div>
                                     <div class="col md-0">
-                                        <form action="delete.php" method="get">
-                                            <input class="btn btn-sm btn-danger" type="submit" id="<?php echo $mhs['id_mhs'] ?>" value=" Delete">
+                                        <form action="delete.php" method="POST">
+                                            <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
+                                            <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                         </form>
                                     </div>
                                 </div>

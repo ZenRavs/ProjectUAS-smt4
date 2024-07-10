@@ -47,10 +47,7 @@ if (isset($_SESSION['user'])) {
                             <div class="btn-group">
                                 <div class="row g-2">
                                     <div class="col md-0">
-                                        <form action="edit_form.php" method="POST">
-                                            <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
-                                            <input class="btn btn-sm btn-primary" type="submit" value="Edit">
-                                        </form>
+                                        <button class="btn btn-sm btn-primary edit-btn" data-id="<?php echo $mhs['id_mhs'] ?>">Edit</button>
                                     </div>
                                     <div class="col md-0">
                                         <form action="delete.php" method="get">

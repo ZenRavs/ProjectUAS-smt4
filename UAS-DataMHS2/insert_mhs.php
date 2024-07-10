@@ -1,4 +1,5 @@
 <?php
+include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
     include 'supabaseConnect.php';

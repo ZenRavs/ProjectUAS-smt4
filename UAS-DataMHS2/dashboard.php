@@ -58,22 +58,6 @@ session_start();
                 });
             });
 
-            // $(document).on('submit', '.content-inner', function(e) {
-            //     e.preventDefault();
-            //     $.ajax({
-            //         url: 'insert_mhs.php',
-            //         type: 'POST',
-            //         data: $(this).serialize(),
-            //         success: function(response) {
-            //             alert(response);
-            //             location.reload(); // Refresh the table
-            //         },
-            //         error: function() {
-            //             alert('Terjadi kesalahan saat menghubungi server.');
-            //         }
-            //     });
-            // });
-
             $(document).on('click', '.edit-btn', function(e) {
                 e.preventDefault();
                 var id = $(this).data('id');

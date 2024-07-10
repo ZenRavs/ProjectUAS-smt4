@@ -1,5 +1,4 @@
 <?php
-//include 'supabaseConnect.php';
 session_start();
 if (isset($_SESSION['user'])) {
 ?>
@@ -63,21 +62,6 @@ if (isset($_SESSION['user'])) {
             $('.cancel-btn').on('click', function() {
                 $('.content-inner').load('table_mhs.php');
             });
-            // $('#insertForm').on('#submit', function(e) {
-            //     e.preventDefault();
-            //     $.ajax({
-            //         url: 'insert_mhs.php',
-            //         type: 'POST',
-            //         data: $(this).serialize(),
-            //         success: function(response) {
-            //             alert(response)
-            //             $('.content-inner').load('table_mhs.php');
-            //         },
-            //         error: function() {
-            //             alert('Terjadi kesalahan saat menghubungi server.');
-            //         }
-            //     });
-            // });
         });
     </script>
 

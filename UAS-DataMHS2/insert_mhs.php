@@ -25,6 +25,13 @@ if (isset($_SESSION['user'])) {
         'tanggal_lahir' => $tanggal_lahir
     ];
     $result = pg_insert($dbconn, $table, $data);
+?>
+    <script>
+        $(document).ready(function() {
+            $('.content-inner').load('table_mhs.php');
+        });
+    </script>
+<?php
 } else {
     echo "Invalid request.";
 }

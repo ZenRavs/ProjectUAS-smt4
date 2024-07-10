@@ -18,7 +18,7 @@ if (isset($_SESSION['user'])) {
                                         <input type="text" class="form-control" id="kode_faku" name="kode_faku" required>
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="kode_jurusan">Jurusan</label>
+                                        <label for="kode_jurusan">Prodi</label>
                                         <input type="text" class="form-control" id="kode_jurusan" name="kode_jurusan" required>
                                     </div>
                                     <div class="col-md">

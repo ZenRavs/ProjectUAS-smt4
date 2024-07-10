@@ -2,18 +2,20 @@
 include 'supabaseConnect.php';
 session_start();
 
+try {
 if (isset($_SESSION['user'])) {
-    //ambil
-    $fakultas_mhs = $_POST['kode'];
+    // Mengambil data dari form
+    $faku = $_POST['kode'];
     $fakultas = $_POST['fakultas'];
     print_r ($_POST);
 
     //perintah sql
     $table = 'fakultas';
     $data = [
-        'kode_faku' => $fakultas_mhs,
+        'kode' => $faku,
         'fakultas' => $fakultas,
     ];
+
     $result = pg_insert($dbconn, $table, $data);
 ?>
     <script>
@@ -21,7 +23,11 @@ if (isset($_SESSION['user'])) {
             $('.content-inner').load('table_fakultas.php');
         });
     </script>
+
 <?php
 } else {
     echo "Invalid request.";
+}
+} catch (Exception $e) {
+    
 }

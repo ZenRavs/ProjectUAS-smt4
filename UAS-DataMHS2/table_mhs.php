@@ -6,12 +6,22 @@ if (isset($_SESSION['user'])) {
     $result = pg_query($dbconn, $query);
     $data_mhs = pg_fetch_all($result);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
     <div id="formContainer" class="container flex border rounded mt-3 bg-white p-3">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Data Mahasiswa</h1>
             <button class="btn btn-primary addNew">Insert</button>
         </div>
-        <div></div>
         <table class="table table-hover mt-2">
             <thead>
                 <tr>
@@ -51,25 +61,20 @@ if (isset($_SESSION['user'])) {
                                         <button class="btn btn-sm btn-primary edit-btn" data-id="<?php echo $mhs['id_mhs'] ?>">Edit</button>
                                     </div>
                                     <div class="col md-0">
-                                        <form action="delete.php" method="POST">
-                                            <input type="hidden" name="id_mhs" value="<?php echo $mhs['id_mhs'] ?>">
-                                            <input class="btn btn-sm btn-danger" type="submit" value="Delete">
-                                        </form>
+                                        <button class="btn btn-sm btn-danger delete-btn" data-id="<?php echo $mhs['id_mhs'] ?>">Delete</button>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-            </tbody>
-        <?php
+                <?php
                     $i++;
                 }
-        ?>
+                ?>
+            </tbody>
         </table>
     </div>
-    <link rel="stylesheet" href="styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('.addNew').on('click', function() {
@@ -83,6 +88,7 @@ if (isset($_SESSION['user'])) {
                     }
                 });
             });
+
             $(document).on('submit', '#formContainer', function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -104,9 +110,7 @@ if (isset($_SESSION['user'])) {
                 $.ajax({
                     url: 'edit_form.php',
                     type: 'POST',
-                    data: {
-                        id_mhs: id
-                    },
+                    data: { id_mhs: id },
                     success: function(response) {
                         $('#formContainer').html(response);
                     },
@@ -116,25 +120,32 @@ if (isset($_SESSION['user'])) {
                 });
             });
 
-
-            $(document).on('submit', '#formContainer', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'update_mhs.php',
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        alert(response);
-                        location.reload(); // Refresh the table
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan saat menghubungi server.');
-                    }
-                });
+            $('.delete-btn').on('click', function() {
+                var id = $(this).data('id');
+                if (confirm('Are you sure you want to delete this record?')) {
+                    $.ajax({
+                        url: 'delete.php',
+                        type: 'POST',
+                        data: { id_mhs: id },
+                        success: function(response) {
+                            var result = JSON.parse(response);
+                            if (result.status == "success") {
+                                alert("Record deleted successfully.");
+                                location.reload(); // Refresh the table
+                            } else {
+                                alert("Error: " + result.message);
+                            }
+                        },
+                        error: function() {
+                            alert('Terjadi kesalahan saat menghubungi server.');
+                        }
+                    });
+                }
             });
         });
     </script>
-
+</body>
+</html>
 <?php
 } else {
     header("location: index.php");
